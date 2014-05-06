@@ -16,3 +16,13 @@ typedef	struct	msg_table_
 	msg_t	msg_id;
 	int 	(*msg_handler)(char *, uint16_t , char **, uint16_t);
 }msg_table_t;
+
+/* DC main message type.
+ * This is the message exchanged between server and retainers
+ */
+typedef	struct	dc_msg_
+{
+	msg_t		msg_type;
+	uint32_t	payload_len;
+	unsigned char *payload;
+}dc_msg_t;
