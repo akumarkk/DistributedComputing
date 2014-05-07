@@ -61,17 +61,89 @@ get_mcast_server(char	*server)
 	return FAILURE;
 }
 
+void
+init_connection(connection_t *conn, int fd)
+{
+	struct	sockaddr_in	myaddr;
+	int		len = sizeof(myaddr);
+	char	server[16] = "":
+
+	memset(&myaddr, 0, sizeof(myaddr));
+
+	getsockname(fd, &myaddr, &len);
+	conn->sock_fd = fd;
+	conn->dest_addr = myaddr.sin_addr;
+	conn->src_port = myaddr.sin_port;
+
+	get_mcast_server(&server);
+	inet_pton(AF_INET, server, &dest.sin_addr);
+	conn->dest_addr = dest.sin_addr;
+	conn->dest_port = htons(1234);
+
+	return;
+}
 
 
 
+dc_msg_t *
+retainer_compose_addme_message()
+{
+	addme_info_t	msg;
+	char			*payload = NULL;
+	unsigned	char*addme_msg = NULL;
+
+	/* Message buffer = type
+	 *					length of payload
+	 *					Payload
+	 */
+	addme_msg = malloc(sizeof(msg_t) + 4 + sizeof(addme_info_t));
+
+	memset(&msg, 0, sizeof(addme_info_t));
+	memcpy(addme_msg, DC_MSG_HANDSHAKE_ADDME, sizeof(msg_t));
+	tmp = addme_msg + sizeof(msg_t);
+	memcpy(tmp, sizeof(addme_info_t), 4);
+
+	tmp = tmp + 4;
+	memcpy(tmp, msg, sizeof(msg));
+
+	return addme_msg;
+}
+
+int
+send_message(connection_t *conn, const unsigned char *msg, uint32_t len)
+{
+	int	nbytes = 0;
+
+	if(msg == NULL || (len == 0))
+		return -1;
+
+	nbytes = sendto(conn->sock_fd, msg, len, 0, &conn->dest_addr, sizeof(conn->dest_addr));
+	return nbytes;
+}
+
+	
 int
 main()
 {
-	char server[1024] = "";
-	int ret = get_mcast_server(server);
+	int			sock_fd = -1, ret = FAILURE;
+	dc_msg_t 	*add_msg;	
+	char 		server[1024] = "";
+	int 		ret=-1; 
 
-	if(ret == SUCCESS)
-		printf("Server is %s\n", server);
-	else
-		printf("Server not found\n");
+
+	sock_fd = socket(AF_INET, SOCK_DGRAM, 0);
+	if(sock_fd == -1)
+	{
+		perror("SOcket");
+		return -1;
+	}
+
+	init_connection(connection, sock_fd);
+	
+	add_msg = retainer_compose_addme_message();
+	if(add_msg)
+		ret = send_message(&connection, add_msg, sizeof(msg_t) + sizeof(addme_info_t) +4);
+	
+	printf("Sent %d bytes Successfully\n", ret);
 }
+
