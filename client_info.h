@@ -4,6 +4,7 @@
 /* Structure to hold client information */
 typedef	struct	client_info_
 {
+	uint32_t	id;
 	int8_t		status;
 	char		ip[16];
 	uint16_t	port;
@@ -13,10 +14,12 @@ typedef	struct	client_info_
 /* ADDME message contents */
 typedef struct	addme_info_
 {
-	uint8_t		ip_len;
-	char		ip16[16];
+	avl_t		ipaddr_avl;
 	uint16_t	port;
+	uint8_t		no_of_groups;			
+	avl_t		groups[0];
 }addme_info_t;
+
 
 
 
