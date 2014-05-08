@@ -16,6 +16,8 @@ typedef	enum opcode_
 {
 	sBindAddress,
 	sBindport,
+	sJoinAddr,
+	sJoinPort,
 	cDestMulticasteAddr,
 	cDestMultiCasteport,
 	BadOption
@@ -25,6 +27,8 @@ keyword_t	keywords[] =
 {
 	{ "sServerBindAddress", sBindAddress },
 	{ "sServerBindPort", 	sBindport },
+	{ "sServerJoinAddress", sJoinAddr },
+	{ "sServerJoinPort", sJoinPort },
 	{ "cDestMultiCasteAddress", cDestMulticasteAddr },
 	{ "cDestMultiCastePort", cDestMultiCasteport }
 };
@@ -43,7 +47,7 @@ get_opcode_from_keyword(char	*key)
 	return BadOption;
 }
 	
-char *
+int
 get_value_of_option(FILE *fp, opcode_t	op, char *get_value)
 {
     //FILE    *fp = fopen(CLIENT_CONFIG_FILE, "r");
@@ -52,7 +56,7 @@ get_value_of_option(FILE *fp, opcode_t	op, char *get_value)
 	opcode_t	tmp_opc;
 
     if(fp == NULL || (get_value == NULL))
-        return NULL;
+        return -1;
 
     while( value=fgets(f_line, sizeof(f_line), fp) )
     {
@@ -85,13 +89,13 @@ get_value_of_option(FILE *fp, opcode_t	op, char *get_value)
 				strcpy(get_value, value);
 				get_value[strlen(value) - 1] = '\0';
 
-				return get_value;
+				return 0;
 			}
 
         }
         memset(line, 0, sizeof(line));
     }
 
-	return NULL;
+	return -1;
 }
 
