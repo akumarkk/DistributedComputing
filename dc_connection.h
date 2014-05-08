@@ -1,6 +1,9 @@
 #ifndef _DC_CONNECTION_H_
 #define _DC_CONNECTION_H_
 
+#include <sys/socket.h>
+#include <netinet/in.h>
+
 typedef	struct	connection_
 {
 	int			sock_fd;
