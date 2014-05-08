@@ -30,5 +30,12 @@ typedef	struct	dc_msg_
 	char 		payload[0];
 }dc_msg_t;
 
+int
+dc_msg_handshake_addme(char *payload, uint16_t payload_len, char **return_payload, uint16_t ret_payload_len);
 
+int
+dc_msg_heartbeat_get(char *payload, uint16_t payload_len, char **return_payload, uint16_t ret_payload_len);
+
+int
+dc_msg_problem_request(char *payload, uint16_t payload_len, char **return_payload, uint16_t ret_payload_len);
 #endif /* _DC_MSGDEF_H_ */

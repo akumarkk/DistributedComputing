@@ -115,6 +115,8 @@ main()
 		char	msg[1024] = "";
 		int		len = sizeof(from_addr);
 
+		printf("Waiting to receive message:\n");
+
 		ret = recvfrom(sock_fd, msg, sizeof(msg), 0, &from_addr, &len);
 		inet_ntop(AF_INET, &from_addr.sin_addr, from_ip, sizeof(from_ip));
 		printf("********************************************************\n");

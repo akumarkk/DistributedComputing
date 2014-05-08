@@ -26,7 +26,7 @@ typedef	enum opcode_
 	BadOption
 }opcode_t;
 
-keyword_t	keywords[] = 
+/*keyword_t	keywords[] = 
 {
 	{ "sServerBindAddress", sBindAddress },
 	{ "sServerBindPort", 	sBindport },
@@ -34,6 +34,6 @@ keyword_t	keywords[] =
 	{ "sServerJoinPort", sJoinPort },
 	{ "cDestMultiCasteAddress", cDestMulticasteAddr },
 	{ "cDestMultiCastePort", cDestMultiCasteport }
-};
+};*/
 
 #endif /* _DC_PARSE_UTILS_H_ */
