@@ -145,5 +145,23 @@ main()
 		ret = send_message(&connection, add_msg, sizeof(msg_t) + sizeof(addme_info_t) +4);
 	
 	printf("Sent %d bytes Successfully\n", ret);
+
+	{
+		struct	sockaddr_in	from_addr;
+		char	from_ip[16] = "";
+		char	msg[1024] = "";
+		int		len = sizeof(from_addr);
+
+		ret = recvfrom(sock_fd, msg, sizeof(msg), 0, &from_addr, &len);
+		inet_ntop(AF_INET, &from_addr.sin_addr, from_ip, sizeof(from_ip));
+		printf("********************************************************\n");
+		printf("* \tReceived %d bytes from %s:%d\n", ret, from_ip, ntohs(from_addr.sin_port));
+		printf("* \tMessage: %s\n", msg);
+		printf("********************************************************\n");
+	}
+
+	return 0;
+}
+
 }
 

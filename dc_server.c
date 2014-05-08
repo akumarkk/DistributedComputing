@@ -7,6 +7,19 @@
 #include <netinet/in.h>
 
 #define MAX_PACKET_SIZE (4* 1024)
+
+int
+server_process_addme_message(
+		char 		*payload,
+		uint16_t	payload_len,
+		char		**return_payload,
+		uint16_t	return_payload_len)
+{
+	printf("%s: Processing addme message\n", __FUNCTION__);
+	return 0;
+
+}
+
 void
 server_loop(connection_t	conn)
 {
@@ -24,6 +37,15 @@ server_loop(connection_t	conn)
 	printf("Received %d bytes from %s:%hu\n", nbytes, from_ip, ntohs(from_addr.sin_port));
 	
 	recv_buf->buf_len = nbytes;
+	process_message(conn, recv_buff);
+
+	char msg_to_send[] = "Good, I have received yoor message retainer";
+
+	nbytes = sendto(conn.sock_fd, msg_to_send, strlen(msg_to_send), 0, &from_addr, sizeof(from_addr));
+	printf("Successfully sent %d bytes to %s:%d\n", nbytes, from_ip, ntohs(from_addr.sin_port));
+
+	return;
+}
 
 
 int
