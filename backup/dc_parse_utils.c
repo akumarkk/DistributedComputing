@@ -4,7 +4,24 @@
 #include <stdint.h>
 #include <ctype.h>
 
-#include "dc_parse_utils.h"
+#define FAILURE -1
+
+typedef struct	keyword_
+{
+	char		key[256];
+	uint16_t	opcode;
+}keyword_t;
+
+typedef	enum opcode_
+{
+	sBindAddress,
+	sBindport,
+	sJoinAddr,
+	sJoinPort,
+	cDestMulticasteAddr,
+	cDestMultiCasteport,
+	BadOption
+}opcode_t;
 
 keyword_t	keywords[] = 
 {

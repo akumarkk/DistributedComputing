@@ -1,7 +1,6 @@
 #ifndef _CLIENT_INFO_H_ 
 #define _CLIENT_INFO_H_
 
-#include "dc_tlv_defs.h"
 /* Structure to hold client information */
 typedef	struct	client_info_
 {
@@ -23,4 +22,4 @@ typedef struct	addme_info_
 
 
 
-#endif /*_CLIENT_INFO_H_ */
+

@@ -1,10 +1,8 @@
 #ifndef _DC_MSGDEF_H_
 #define _DC_MSGDEF_H_
 
-
-#include <stdint.h>
 /* Definition of Message types used in communication between Client and Server */
-typedef	enum msg_
+enum msg_
 {
 	DC_MSG_HANDSHAKE_ADDME,
 	DC_MSG_HEARTBEAT_GET,
@@ -27,7 +25,7 @@ typedef	struct	dc_msg_
 {
 	msg_t		msg_type;
 	uint32_t	payload_len;
-	char 		payload[0];
+	unsigned char payload[0];
 }dc_msg_t;
 
 
