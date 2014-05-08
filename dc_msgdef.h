@@ -27,3 +27,6 @@ typedef	struct	dc_msg_
 	uint32_t	payload_len;
 	unsigned char payload[0];
 }dc_msg_t;
+
+
+#endif /* _DC_MSGDEF_H_ */

@@ -9,3 +9,5 @@ typedef	struct	connection_
 	struct		in_addr src_addr;
 	uint16_t	dest_port;
 }connection_t;
+
+#endif /* _DC_CONNECTION_H_ */

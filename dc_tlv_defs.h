@@ -14,4 +14,4 @@ typedef struct	avl_
 	char		value[0];
 }avl_t;
 
-
+#endif /*_DC_AVL_DEFS_H_ */

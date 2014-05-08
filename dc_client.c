@@ -6,6 +6,7 @@
 #include <sys/types.h>
 #include <netinet/in.h>
 
+#include "dc_connection.h"
 
 #define CLIENT_CONFIG_FILE 			"dc_client.conf"
 #define PARSE_SERVER_ADDRESS_TAG 	"multi_cast_server"
@@ -66,7 +67,7 @@ init_connection(connection_t *conn, int fd)
 {
 	struct	sockaddr_in	myaddr;
 	int		len = sizeof(myaddr);
-	char	server[16] = "":
+	char	server[16] = "";
 
 	memset(&myaddr, 0, sizeof(myaddr));
 
