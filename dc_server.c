@@ -6,7 +6,13 @@
 #include <sys/types.h>
 #include <netinet/in.h>
 
+#include "dc_connection.h"
+#include "dc_packet.h"
+#include "dc_parse_utils.h"
+
 #define MAX_PACKET_SIZE (4* 1024)
+
+connection_t	connection;
 
 int
 server_process_addme_message(
@@ -37,7 +43,7 @@ server_loop(connection_t	conn)
 	printf("Received %d bytes from %s:%hu\n", nbytes, from_ip, ntohs(from_addr.sin_port));
 	
 	recv_buf->buf_len = nbytes;
-	process_message(conn, recv_buff);
+	process_message(conn, recv_buf);
 
 	char msg_to_send[] = "Good, I have received yoor message retainer";
 
@@ -47,16 +53,18 @@ server_loop(connection_t	conn)
 	return;
 }
 
-
+#define DC_SERVER_CONFIG_FILE "dc_server.config"
 int
 main()
 {
 	struct		sockaddr_in	join_addr;
 	struct		ip_mreq		join_mc;
 	uint16_t	join_port = 0;
+	char		join_ip[16] = "";
 	int			nbytes = 0, ret = -1;
 	int			sock_fd = -1;
 	char		value[1024] = "";
+	FILE		*fp = fopen(DC_SERVER_CONFIG_FILE, "r");
 
 	sock_fd = socket(AF_INET, SOCK_DGRAM, 0);
 	if(sock_fd == -1)
@@ -88,7 +96,7 @@ main()
 	inet_pton(AF_INET, join_ip, &join_addr.sin_addr);
 
 	join_mc.imr_multiaddr = join_addr.sin_addr;
-	join_mc.imr_interface = INADDR_ANY;
+	join_mc.imr_interface.s_addr = INADDR_ANY;
 
 	printf("Joining Multicast Group : %s@%u\n", join_ip, join_port);
 
@@ -99,4 +107,8 @@ main()
 		return -1;
 	}
 	printf("Successfully Joined Multicast Group : %s\n", join_ip);
+
+	connection.sock_fd = sock_fd;
+	connection.src_addr = join_addr.sin_addr;
+	server_loop(connection);
 }
