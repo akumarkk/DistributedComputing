@@ -3,6 +3,7 @@
 
 
 #include <stdint.h>
+#define DUMP
 /* Definition of Message types used in communication between Client and Server */
 typedef	enum msg_
 {

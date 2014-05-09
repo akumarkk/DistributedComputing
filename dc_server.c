@@ -10,6 +10,8 @@
 #include "dc_packet.h"
 #include "dc_parse_utils.h"
 
+#define DUMP
+
 #define MAX_PACKET_SIZE (4* 1024)
 
 int
@@ -48,6 +50,15 @@ server_loop(connection_t	conn)
 	printf("Received %d bytes from %s:%hu\n", nbytes, from_ip, ntohs(from_addr.sin_port));
 	
 	recv_buf->buf_len = nbytes;
+#ifdef DUMP
+    int i=0;
+    unsigned char *ch = (char *)recv_buf->buf;
+	printf("# of bytes : %d\n", nbytes);
+    for(i=0; i< nbytes; i++)
+        printf("%02x ", *(ch++));
+    printf("\n");
+#endif
+
 	process_message(conn, recv_buf);
 
 	char msg_to_send[] = "Good, I have received yoor message retainer";
@@ -148,8 +159,10 @@ server_test_message(int sock_fd)
 	}
 
 	inet_ntop(AF_INET, &from_addr.sin_addr, from_ip, sizeof(from_ip));
+	printf("\n+-----------------------SERVER:TEST MESSAGE------------------------+\n+");
 	printf("%s: Read %d bytes from %s@%u\n", __FUNCTION__, nbytes, from_ip, ntohs(from_addr.sin_port));
-	printf("%s: Message %s\n", __FUNCTION__, msg);
+	printf("+%s: Message %s\n", __FUNCTION__, msg);
+	printf("+-------------------------SERVER: END TEST MESSAGE-------------------+\n");
 
 	strcpy(msg, "I have received your message retainer. Thank you!!!");
 

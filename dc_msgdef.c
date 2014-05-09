@@ -18,9 +18,13 @@ get_msghandler_from_type(msg_t	msg_id)
 	n = sizeof(server_msg_table) / sizeof(server_msg_table);
     for(i = 0; i<n; i++)
     {
-        if(server_msg_table[i].msg_id = msg_id)
+        if(server_msg_table[i].msg_id == msg_id)
+		{
             handler = server_msg_table[i].msg_handler;
-    }
+    		printf("Found handler fot msg_id : %d\n", msg_id);
+			break;
+		}
+	}
 
 	return handler;
 }

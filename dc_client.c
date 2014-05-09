@@ -85,6 +85,16 @@ retainer_compose_addme_message()
 	addme_msg->payload_len = sizeof( addme_info_t );
 	memset(addme_msg->payload, 0, sizeof(addme_info_t));
 
+#ifdef DUMP
+	int i=0;
+	unsigned char *ch = (char *)addme_msg;
+	int len = (sizeof(dc_msg_t) + sizeof(addme_info_t));
+	printf("# of bytes = %d\n", len);
+	for(i=0; i< len; i++)
+		printf("%02x ", *(ch++));
+	printf("\n");
+#endif
+
 	return addme_msg;
 }
 
@@ -190,8 +200,11 @@ client_test_message(int sock_fd)
 	memset(msg, 0, sizeof(msg));
     nbytes = recvfrom(sock_fd, msg, sizeof(msg), 0, &from_addr, &from_addr_len);
     inet_ntop(AF_INET, &from_addr.sin_addr, from_ip, sizeof(from_ip));
-    printf("%s: Read %d bytes from %s@%u\n", __FUNCTION__, nbytes, from_ip, ntohs(from_addr.sin_port));
-    printf("%s: Message %s\n", __FUNCTION__, msg);
+
+	printf("+-------------------------- CLIENT : TEST MESSAGE -------------------+\n");
+    printf("+%s: Read %d bytes from %s@%u\n", __FUNCTION__, nbytes, from_ip, ntohs(from_addr.sin_port));
+    printf("+%s: Message %s\n", __FUNCTION__, msg);
+	printf("+-------------------------- CLIENT : END MESSAGE --------------------+\n");
 
     //strcpy(msg, "I have received your message retainer. Thank you!!!");
 
