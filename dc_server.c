@@ -37,6 +37,7 @@ server_loop(connection_t	conn)
 
 	recv_buf = get_buffer(MAX_PACKET_SIZE);
 
+	printf("Waiting to receive message ....\n");
 	nbytes = recvfrom(conn.sock_fd, recv_buf->buf, MAX_PACKET_SIZE, 0, &from_addr, &addr_len);
 	inet_ntop(AF_INET, &from_addr.sin_addr, from_ip, sizeof(from_ip));
 
@@ -53,13 +54,13 @@ server_loop(connection_t	conn)
 	return;
 }
 
-#define DC_SERVER_CONFIG_FILE "dc_server.config"
+#define DC_SERVER_CONFIG_FILE "dc_server.conf"
 int
 main()
 {
-	struct		sockaddr_in	join_addr;
+	struct		sockaddr_in	join_addr, myaddr;
 	struct		ip_mreq		join_mc;
-	uint16_t	join_port = 0;
+	uint16_t	bind_port = 0;
 	char		join_ip[16] = "";
 	int			nbytes = 0, ret = -1;
 	int			sock_fd = -1;
@@ -80,14 +81,25 @@ main()
 		return -1;
 	}
 
-	ret = get_value_of_option(fp, sJoinPort, value);
+	ret = get_value_of_option(fp, sBindport, value);
 	if(ret == -1)
 	{
-		printf("Failed to Read Join Port. \nExiting...\n");
+		printf("Failed to Read Bind Port. \nExiting...\n");
 		return -1;
 	}
 
-	join_port = atoi(value);
+	bind_port = atoi(value);
+	myaddr.sin_family = AF_INET;
+	myaddr.sin_port = htons(bind_port);
+	myaddr.sin_addr.s_addr = INADDR_ANY;
+
+	ret = bind(sock_fd, &myaddr, sizeof(myaddr));
+	if(ret == -1)
+	{
+		perror("Bind");
+		return -1;
+	}
+	printf("Bound to INADDR_ANY@%u\n", htons(bind_port));
 
 	memset(&join_addr, 0, sizeof(join_addr));
 	memset(&join_mc, 0, sizeof(join_mc));
@@ -98,7 +110,7 @@ main()
 	join_mc.imr_multiaddr = join_addr.sin_addr;
 	join_mc.imr_interface.s_addr = INADDR_ANY;
 
-	printf("Joining Multicast Group : %s@%u\n", join_ip, join_port);
+	printf("Joining Multicast Group : %s...\n", join_ip);
 
 	ret = setsockopt(sock_fd, IPPROTO_IP, IP_ADD_MEMBERSHIP, &join_mc, sizeof(join_mc));
 	if(ret == -1)
