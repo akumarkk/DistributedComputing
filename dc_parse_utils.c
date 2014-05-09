@@ -70,7 +70,7 @@ get_value_of_option(FILE *fp, opcode_t	op, char *get_value)
 			if(tmp_opc = op)
 			{
 				strcpy(get_value, value);
-				get_value[strlen(value) - 1] = '\0';
+				get_value[strlen(value) ] = '\0';
 
 				return 0;
 			}
