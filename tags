@@ -4,181 +4,366 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+BadOption	backup/compile_test/dc_parse_utils.c	/^	BadOption$/;"	e	enum:opcode_	file:
+BadOption	backup/dc_parse_utils.c	/^	BadOption$/;"	e	enum:opcode_	file:
 BadOption	compile_test/dc_parse_utils.c	/^	BadOption$/;"	e	enum:opcode_	file:
-BadOption	dc_parse_utils.c	/^	BadOption$/;"	e	enum:opcode_	file:
+BadOption	dc_parse_utils.h	/^	BadOption$/;"	e	enum:opcode_
 CC	Makefile	/^CC=gcc$/;"	m
+CC	backup/Makefile	/^CC=gcc$/;"	m
+CC	backup/compile_test/Makefile	/^CC=gcc$/;"	m
 CC	compile_test/Makefile	/^CC=gcc$/;"	m
 CFLAGs	Makefile	/^CFLAGs=-g$/;"	m
+CFLAGs	backup/Makefile	/^CFLAGs=-g$/;"	m
+CFLAGs	backup/compile_test/Makefile	/^CFLAGs=-g -I.$/;"	m
 CFLAGs	compile_test/Makefile	/^CFLAGs=-g -I.$/;"	m
+CLIENT_CONFIG_FILE	backup/compile_test/dc_client.c	12;"	d	file:
+CLIENT_CONFIG_FILE	backup/dc_client.c	13;"	d	file:
 CLIENT_CONFIG_FILE	compile_test/dc_client.c	12;"	d	file:
-CLIENT_CONFIG_FILE	dc_client.c	11;"	d	file:
+CLIENT_CONFIG_FILE	dc_client.c	15;"	d	file:
+DC_ATTR_MACHINE_IP	backup/compile_test/dc_tlv_defs.h	/^	DC_ATTR_MACHINE_IP,$/;"	e	enum:attr_t_
+DC_ATTR_MACHINE_IP	backup/dc_tlv_defs.h	/^	DC_ATTR_MACHINE_IP,$/;"	e	enum:attr_t_
 DC_ATTR_MACHINE_IP	compile_test/dc_tlv_defs.h	/^	DC_ATTR_MACHINE_IP,$/;"	e	enum:attr_t_
 DC_ATTR_MACHINE_IP	dc_tlv_defs.h	/^	DC_ATTR_MACHINE_IP,$/;"	e	enum:attr_t_
+DC_ATTR_MULTICAST_GROUP	backup/compile_test/dc_tlv_defs.h	/^	DC_ATTR_MULTICAST_GROUP$/;"	e	enum:attr_t_
+DC_ATTR_MULTICAST_GROUP	backup/dc_tlv_defs.h	/^	DC_ATTR_MULTICAST_GROUP$/;"	e	enum:attr_t_
 DC_ATTR_MULTICAST_GROUP	compile_test/dc_tlv_defs.h	/^	DC_ATTR_MULTICAST_GROUP$/;"	e	enum:attr_t_
 DC_ATTR_MULTICAST_GROUP	dc_tlv_defs.h	/^	DC_ATTR_MULTICAST_GROUP$/;"	e	enum:attr_t_
+DC_MSG_HANDSHAKE_ADDME	backup/compile_test/dc_msgdef.h	/^	DC_MSG_HANDSHAKE_ADDME,$/;"	e	enum:msg_
+DC_MSG_HANDSHAKE_ADDME	backup/dc_msgdef.h	/^	DC_MSG_HANDSHAKE_ADDME,$/;"	e	enum:msg_
 DC_MSG_HANDSHAKE_ADDME	compile_test/dc_msgdef.h	/^	DC_MSG_HANDSHAKE_ADDME,$/;"	e	enum:msg_
 DC_MSG_HANDSHAKE_ADDME	dc_msgdef.h	/^	DC_MSG_HANDSHAKE_ADDME,$/;"	e	enum:msg_
+DC_MSG_HEARTBEAT_GET	backup/compile_test/dc_msgdef.h	/^	DC_MSG_HEARTBEAT_GET,$/;"	e	enum:msg_
+DC_MSG_HEARTBEAT_GET	backup/dc_msgdef.h	/^	DC_MSG_HEARTBEAT_GET,$/;"	e	enum:msg_
 DC_MSG_HEARTBEAT_GET	compile_test/dc_msgdef.h	/^	DC_MSG_HEARTBEAT_GET,$/;"	e	enum:msg_
 DC_MSG_HEARTBEAT_GET	dc_msgdef.h	/^	DC_MSG_HEARTBEAT_GET,$/;"	e	enum:msg_
+DC_MSG_PROBLEM_REQUEST	backup/compile_test/dc_msgdef.h	/^	DC_MSG_PROBLEM_REQUEST$/;"	e	enum:msg_
+DC_MSG_PROBLEM_REQUEST	backup/dc_msgdef.h	/^	DC_MSG_PROBLEM_REQUEST$/;"	e	enum:msg_
 DC_MSG_PROBLEM_REQUEST	compile_test/dc_msgdef.h	/^	DC_MSG_PROBLEM_REQUEST$/;"	e	enum:msg_
 DC_MSG_PROBLEM_REQUEST	dc_msgdef.h	/^	DC_MSG_PROBLEM_REQUEST$/;"	e	enum:msg_
-DEPS	Makefile	/^DEPS=client_info.h dc_connection.h dc_msgdef.h dc_packet.h dc_tlv_defs.h$/;"	m
+DEPS	Makefile	/^DEPS=client_info.h dc_connection.h dc_msgdef.h dc_packet.h dc_tlv_defs.h dc_parse_utils.h$/;"	m
+DEPS	backup/Makefile	/^DEPS=client_info.h dc_connection.h dc_msgdef.h dc_packet.h dc_tlv_defs.h$/;"	m
+DEPS	backup/compile_test/Makefile	/^DEPS=client_info.h dc_connection.h dc_msgdef.h dc_packet.h dc_tlv_defs.h$/;"	m
 DEPS	compile_test/Makefile	/^DEPS=client_info.h dc_connection.h dc_msgdef.h dc_packet.h dc_tlv_defs.h$/;"	m
+FAILURE	backup/compile_test/dc_client.c	15;"	d	file:
+FAILURE	backup/compile_test/dc_parse_utils.c	7;"	d	file:
+FAILURE	backup/dc_client.c	16;"	d	file:
+FAILURE	backup/dc_parse_utils.c	7;"	d	file:
 FAILURE	compile_test/dc_client.c	15;"	d	file:
 FAILURE	compile_test/dc_parse_utils.c	7;"	d	file:
-FAILURE	dc_client.c	14;"	d	file:
-FAILURE	dc_parse_utils.c	7;"	d	file:
+FAILURE	dc_client.c	18;"	d	file:
+FAILURE	dc_parse_utils.h	10;"	d
+MAX_PACKET_SIZE	backup/compile_test/dc_server.c	9;"	d	file:
+MAX_PACKET_SIZE	backup/dc_server.c	9;"	d	file:
 MAX_PACKET_SIZE	compile_test/dc_server.c	9;"	d	file:
-MAX_PACKET_SIZE	dc_server.c	9;"	d	file:
-OBJS	Makefile	/^OBJS=dc_client.o dc_msgdef.o dc_packet.o dc_parse_utils.o $/;"	m
+MAX_PACKET_SIZE	dc_server.c	12;"	d	file:
+OBJS	backup/Makefile	/^OBJS=dc_client.o dc_msgdef.o dc_packet.o dc_parse_utils.o $/;"	m
+OBJS	backup/compile_test/Makefile	/^OBJS=dc_client.o dc_msgdef.o dc_packet.o dc_parse_utils.o $/;"	m
 OBJS	compile_test/Makefile	/^OBJS=dc_client.o dc_msgdef.o dc_packet.o dc_parse_utils.o $/;"	m
+OBJS_SERVER	Makefile	/^OBJS_SERVER=dc_server.o dc_msgdef.o dc_packet.o dc_parse_utils.o$/;"	m
+PARSE_SERVER_ADDRESS_TAG	backup/compile_test/dc_client.c	13;"	d	file:
+PARSE_SERVER_ADDRESS_TAG	backup/dc_client.c	14;"	d	file:
 PARSE_SERVER_ADDRESS_TAG	compile_test/dc_client.c	13;"	d	file:
-PARSE_SERVER_ADDRESS_TAG	dc_client.c	12;"	d	file:
+PARSE_SERVER_ADDRESS_TAG	dc_client.c	16;"	d	file:
+SUCCESS	backup/compile_test/dc_client.c	14;"	d	file:
+SUCCESS	backup/dc_client.c	15;"	d	file:
 SUCCESS	compile_test/dc_client.c	14;"	d	file:
-SUCCESS	dc_client.c	13;"	d	file:
+SUCCESS	dc_client.c	17;"	d	file:
+_CLIENT_INFO_H_	backup/client_info.h	2;"	d
+_CLIENT_INFO_H_	backup/compile_test/client_info.h	2;"	d
 _CLIENT_INFO_H_	client_info.h	2;"	d
 _CLIENT_INFO_H_	compile_test/client_info.h	2;"	d
+_DC_AVL_DEFS_H_	backup/compile_test/dc_tlv_defs.h	2;"	d
+_DC_AVL_DEFS_H_	backup/dc_tlv_defs.h	2;"	d
 _DC_AVL_DEFS_H_	compile_test/dc_tlv_defs.h	2;"	d
 _DC_AVL_DEFS_H_	dc_tlv_defs.h	2;"	d
+_DC_CONNECTION_H_	backup/compile_test/dc_connection.h	2;"	d
+_DC_CONNECTION_H_	backup/dc_connection.h	2;"	d
 _DC_CONNECTION_H_	compile_test/dc_connection.h	2;"	d
 _DC_CONNECTION_H_	dc_connection.h	2;"	d
+_DC_MSGDEF_H_	backup/compile_test/dc_msgdef.h	2;"	d
+_DC_MSGDEF_H_	backup/dc_msgdef.h	2;"	d
 _DC_MSGDEF_H_	compile_test/dc_msgdef.h	2;"	d
 _DC_MSGDEF_H_	dc_msgdef.h	2;"	d
+_DC_PACKET_H_	backup/compile_test/dc_packet.h	2;"	d
+_DC_PACKET_H_	backup/dc_packet.h	2;"	d
 _DC_PACKET_H_	compile_test/dc_packet.h	2;"	d
 _DC_PACKET_H_	dc_packet.h	2;"	d
+_DC_PARSE_UTILS_H_	dc_parse_utils.h	2;"	d
+addme_info_	backup/client_info.h	/^typedef struct	addme_info_$/;"	s
+addme_info_	backup/compile_test/client_info.h	/^typedef struct	addme_info_$/;"	s
 addme_info_	client_info.h	/^typedef struct	addme_info_$/;"	s
 addme_info_	compile_test/client_info.h	/^typedef struct	addme_info_$/;"	s
+addme_info_t	backup/client_info.h	/^}addme_info_t;$/;"	t	typeref:struct:addme_info_
+addme_info_t	backup/compile_test/client_info.h	/^}addme_info_t;$/;"	t	typeref:struct:addme_info_
 addme_info_t	client_info.h	/^}addme_info_t;$/;"	t	typeref:struct:addme_info_
 addme_info_t	compile_test/client_info.h	/^}addme_info_t;$/;"	t	typeref:struct:addme_info_
+attr_id	backup/compile_test/dc_tlv_defs.h	/^	attr_t		attr_id;$/;"	m	struct:avl_
+attr_id	backup/dc_tlv_defs.h	/^	attr_t		attr_id;$/;"	m	struct:avl_
 attr_id	compile_test/dc_tlv_defs.h	/^	attr_t		attr_id;$/;"	m	struct:avl_
 attr_id	dc_tlv_defs.h	/^	attr_t		attr_id;$/;"	m	struct:avl_
+attr_t	backup/compile_test/dc_tlv_defs.h	/^}attr_t;$/;"	t	typeref:enum:attr_t_
+attr_t	backup/dc_tlv_defs.h	/^}attr_t;$/;"	t	typeref:enum:attr_t_
 attr_t	compile_test/dc_tlv_defs.h	/^}attr_t;$/;"	t	typeref:enum:attr_t_
 attr_t	dc_tlv_defs.h	/^}attr_t;$/;"	t	typeref:enum:attr_t_
+attr_t_	backup/compile_test/dc_tlv_defs.h	/^typedef enum attr_t_$/;"	g
+attr_t_	backup/dc_tlv_defs.h	/^typedef enum attr_t_$/;"	g
 attr_t_	compile_test/dc_tlv_defs.h	/^typedef enum attr_t_$/;"	g
 attr_t_	dc_tlv_defs.h	/^typedef enum attr_t_$/;"	g
+avl_	backup/compile_test/dc_tlv_defs.h	/^typedef struct	avl_$/;"	s
+avl_	backup/dc_tlv_defs.h	/^typedef struct	avl_$/;"	s
 avl_	compile_test/dc_tlv_defs.h	/^typedef struct	avl_$/;"	s
 avl_	dc_tlv_defs.h	/^typedef struct	avl_$/;"	s
+avl_t	backup/compile_test/dc_tlv_defs.h	/^}avl_t;$/;"	t	typeref:struct:avl_
+avl_t	backup/dc_tlv_defs.h	/^}avl_t;$/;"	t	typeref:struct:avl_
 avl_t	compile_test/dc_tlv_defs.h	/^}avl_t;$/;"	t	typeref:struct:avl_
 avl_t	dc_tlv_defs.h	/^}avl_t;$/;"	t	typeref:struct:avl_
+buf	backup/compile_test/dc_packet.h	/^	unsigned char	*buf;$/;"	m	struct:buffer_
+buf	backup/dc_packet.h	/^	unsigned char	*buf;$/;"	m	struct:buffer_
 buf	compile_test/dc_packet.h	/^	unsigned char	*buf;$/;"	m	struct:buffer_
 buf	dc_packet.h	/^	unsigned char	*buf;$/;"	m	struct:buffer_
+buf_len	backup/compile_test/dc_packet.h	/^	uint16_t		buf_len;$/;"	m	struct:buffer_
+buf_len	backup/dc_packet.h	/^	uint16_t		buf_len;$/;"	m	struct:buffer_
 buf_len	compile_test/dc_packet.h	/^	uint16_t		buf_len;$/;"	m	struct:buffer_
 buf_len	dc_packet.h	/^	uint16_t		buf_len;$/;"	m	struct:buffer_
+buffer_	backup/compile_test/dc_packet.h	/^typedef	struct	buffer_$/;"	s
+buffer_	backup/dc_packet.h	/^typedef	struct	buffer_$/;"	s
 buffer_	compile_test/dc_packet.h	/^typedef	struct	buffer_$/;"	s
 buffer_	dc_packet.h	/^typedef	struct	buffer_$/;"	s
+buffer_t	backup/compile_test/dc_packet.h	/^}buffer_t;$/;"	t	typeref:struct:buffer_
+buffer_t	backup/dc_packet.h	/^}buffer_t;$/;"	t	typeref:struct:buffer_
 buffer_t	compile_test/dc_packet.h	/^}buffer_t;$/;"	t	typeref:struct:buffer_
 buffer_t	dc_packet.h	/^}buffer_t;$/;"	t	typeref:struct:buffer_
+cDestMultiCasteport	backup/compile_test/dc_parse_utils.c	/^	cDestMultiCasteport,$/;"	e	enum:opcode_	file:
+cDestMultiCasteport	backup/dc_parse_utils.c	/^	cDestMultiCasteport,$/;"	e	enum:opcode_	file:
 cDestMultiCasteport	compile_test/dc_parse_utils.c	/^	cDestMultiCasteport,$/;"	e	enum:opcode_	file:
-cDestMultiCasteport	dc_parse_utils.c	/^	cDestMultiCasteport,$/;"	e	enum:opcode_	file:
+cDestMultiCasteport	dc_parse_utils.h	/^	cDestMultiCasteport,$/;"	e	enum:opcode_
+cDestMulticasteAddr	backup/compile_test/dc_parse_utils.c	/^	cDestMulticasteAddr,$/;"	e	enum:opcode_	file:
+cDestMulticasteAddr	backup/dc_parse_utils.c	/^	cDestMulticasteAddr,$/;"	e	enum:opcode_	file:
 cDestMulticasteAddr	compile_test/dc_parse_utils.c	/^	cDestMulticasteAddr,$/;"	e	enum:opcode_	file:
-cDestMulticasteAddr	dc_parse_utils.c	/^	cDestMulticasteAddr,$/;"	e	enum:opcode_	file:
+cDestMulticasteAddr	dc_parse_utils.h	/^	cDestMulticasteAddr,$/;"	e	enum:opcode_
+client_info_	backup/client_info.h	/^typedef	struct	client_info_$/;"	s
+client_info_	backup/compile_test/client_info.h	/^typedef	struct	client_info_$/;"	s
 client_info_	client_info.h	/^typedef	struct	client_info_$/;"	s
 client_info_	compile_test/client_info.h	/^typedef	struct	client_info_$/;"	s
+client_info_t	backup/client_info.h	/^}client_info_t;$/;"	t	typeref:struct:client_info_
+client_info_t	backup/compile_test/client_info.h	/^}client_info_t;$/;"	t	typeref:struct:client_info_
 client_info_t	client_info.h	/^}client_info_t;$/;"	t	typeref:struct:client_info_
 client_info_t	compile_test/client_info.h	/^}client_info_t;$/;"	t	typeref:struct:client_info_
+conection	dc_server.c	/^connection_t	conection;$/;"	v
+connection	dc_client.c	/^connection_t connection;$/;"	v
+connection_	backup/compile_test/dc_connection.h	/^typedef	struct	connection_$/;"	s
+connection_	backup/dc_connection.h	/^typedef	struct	connection_$/;"	s
 connection_	compile_test/dc_connection.h	/^typedef	struct	connection_$/;"	s
 connection_	dc_connection.h	/^typedef	struct	connection_$/;"	s
+connection_t	backup/compile_test/dc_connection.h	/^}connection_t;$/;"	t	typeref:struct:connection_
+connection_t	backup/dc_connection.h	/^}connection_t;$/;"	t	typeref:struct:connection_
 connection_t	compile_test/dc_connection.h	/^}connection_t;$/;"	t	typeref:struct:connection_
 connection_t	dc_connection.h	/^}connection_t;$/;"	t	typeref:struct:connection_
+dc_msg_	backup/compile_test/dc_msgdef.h	/^typedef	struct	dc_msg_$/;"	s
+dc_msg_	backup/dc_msgdef.h	/^typedef	struct	dc_msg_$/;"	s
 dc_msg_	compile_test/dc_msgdef.h	/^typedef	struct	dc_msg_$/;"	s
 dc_msg_	dc_msgdef.h	/^typedef	struct	dc_msg_$/;"	s
+dc_msg_handshake_addme	dc_msgdef.c	/^dc_msg_handshake_addme($/;"	f
+dc_msg_heartbeat_get	dc_msgdef.c	/^dc_msg_heartbeat_get($/;"	f
+dc_msg_problem_request	dc_msgdef.c	/^dc_msg_problem_request($/;"	f
+dc_msg_t	backup/compile_test/dc_msgdef.h	/^}dc_msg_t;$/;"	t	typeref:struct:dc_msg_
+dc_msg_t	backup/dc_msgdef.h	/^}dc_msg_t;$/;"	t	typeref:struct:dc_msg_
 dc_msg_t	compile_test/dc_msgdef.h	/^}dc_msg_t;$/;"	t	typeref:struct:dc_msg_
 dc_msg_t	dc_msgdef.h	/^}dc_msg_t;$/;"	t	typeref:struct:dc_msg_
+dest_addr	backup/compile_test/dc_connection.h	/^	struct		in_addr	dest_addr;$/;"	m	struct:connection_	typeref:struct:connection_::in_addr
+dest_addr	backup/dc_connection.h	/^	struct		in_addr	dest_addr;$/;"	m	struct:connection_	typeref:struct:connection_::in_addr
 dest_addr	compile_test/dc_connection.h	/^	struct		in_addr	dest_addr;$/;"	m	struct:connection_	typeref:struct:connection_::in_addr
 dest_addr	dc_connection.h	/^	struct		in_addr	dest_addr;$/;"	m	struct:connection_	typeref:struct:connection_::in_addr
+dest_port	backup/compile_test/dc_connection.h	/^	uint16_t	dest_port;$/;"	m	struct:connection_
+dest_port	backup/dc_connection.h	/^	uint16_t	dest_port;$/;"	m	struct:connection_
 dest_port	compile_test/dc_connection.h	/^	uint16_t	dest_port;$/;"	m	struct:connection_
 dest_port	dc_connection.h	/^	uint16_t	dest_port;$/;"	m	struct:connection_
+get_buffer	backup/compile_test/dc_packet.c	/^get_buffer( int size)$/;"	f
+get_buffer	backup/dc_packet.c	/^get_buffer( int size)$/;"	f
 get_buffer	compile_test/dc_packet.c	/^get_buffer( int size)$/;"	f
 get_buffer	dc_packet.c	/^get_buffer( int size)$/;"	f
+get_mcast_server	backup/compile_test/dc_client.c	/^get_mcast_server(char	*server)$/;"	f
+get_mcast_server	backup/dc_client.c	/^get_mcast_server(char	*server)$/;"	f
 get_mcast_server	compile_test/dc_client.c	/^get_mcast_server(char	*server)$/;"	f
-get_mcast_server	dc_client.c	/^get_mcast_server(char	*server)$/;"	f
+get_msghandler_from_type	dc_msgdef.c	/^get_msghandler_from_type(msg_t	msg_id)$/;"	f
+get_opcode_from_keyword	backup/compile_test/dc_parse_utils.c	/^get_opcode_from_keyword(char	*key)$/;"	f
+get_opcode_from_keyword	backup/dc_parse_utils.c	/^get_opcode_from_keyword(char	*key)$/;"	f
 get_opcode_from_keyword	compile_test/dc_parse_utils.c	/^get_opcode_from_keyword(char	*key)$/;"	f
 get_opcode_from_keyword	dc_parse_utils.c	/^get_opcode_from_keyword(char	*key)$/;"	f
+get_value_of_option	backup/compile_test/dc_parse_utils.c	/^get_value_of_option(FILE *fp, opcode_t	op, char *get_value)$/;"	f
+get_value_of_option	backup/dc_parse_utils.c	/^get_value_of_option(FILE *fp, opcode_t	op, char *get_value)$/;"	f
 get_value_of_option	compile_test/dc_parse_utils.c	/^get_value_of_option(FILE *fp, opcode_t	op, char *get_value)$/;"	f
 get_value_of_option	dc_parse_utils.c	/^get_value_of_option(FILE *fp, opcode_t	op, char *get_value)$/;"	f
+groups	backup/client_info.h	/^	avl_t		groups[0];$/;"	m	struct:addme_info_
+groups	backup/client_info.h	/^	char		**groups;$/;"	m	struct:client_info_
+groups	backup/compile_test/client_info.h	/^	avl_t		groups[0];$/;"	m	struct:addme_info_
+groups	backup/compile_test/client_info.h	/^	char		**groups;$/;"	m	struct:client_info_
 groups	client_info.h	/^	avl_t		groups[0];$/;"	m	struct:addme_info_
 groups	client_info.h	/^	char		**groups;$/;"	m	struct:client_info_
 groups	compile_test/client_info.h	/^	avl_t		groups[0];$/;"	m	struct:addme_info_
 groups	compile_test/client_info.h	/^	char		**groups;$/;"	m	struct:client_info_
+id	backup/client_info.h	/^	uint32_t	id;$/;"	m	struct:client_info_
+id	backup/compile_test/client_info.h	/^	uint32_t	id;$/;"	m	struct:client_info_
 id	client_info.h	/^	uint32_t	id;$/;"	m	struct:client_info_
 id	compile_test/client_info.h	/^	uint32_t	id;$/;"	m	struct:client_info_
+init_connection	backup/compile_test/dc_client.c	/^init_connection(connection_t *conn, int fd)$/;"	f
+init_connection	backup/dc_client.c	/^init_connection(connection_t *conn, int fd)$/;"	f
 init_connection	compile_test/dc_client.c	/^init_connection(connection_t *conn, int fd)$/;"	f
 init_connection	dc_client.c	/^init_connection(connection_t *conn, int fd)$/;"	f
+ip	backup/client_info.h	/^	char		ip[16];$/;"	m	struct:client_info_
+ip	backup/compile_test/client_info.h	/^	char		ip[16];$/;"	m	struct:client_info_
 ip	client_info.h	/^	char		ip[16];$/;"	m	struct:client_info_
 ip	compile_test/client_info.h	/^	char		ip[16];$/;"	m	struct:client_info_
+ipaddr_avl	backup/client_info.h	/^	avl_t		ipaddr_avl;$/;"	m	struct:addme_info_
+ipaddr_avl	backup/compile_test/client_info.h	/^	avl_t		ipaddr_avl;$/;"	m	struct:addme_info_
 ipaddr_avl	client_info.h	/^	avl_t		ipaddr_avl;$/;"	m	struct:addme_info_
 ipaddr_avl	compile_test/client_info.h	/^	avl_t		ipaddr_avl;$/;"	m	struct:addme_info_
+key	backup/compile_test/dc_parse_utils.c	/^	char		key[256];$/;"	m	struct:keyword_	file:
+key	backup/dc_parse_utils.c	/^	char		key[256];$/;"	m	struct:keyword_	file:
 key	compile_test/dc_parse_utils.c	/^	char		key[256];$/;"	m	struct:keyword_	file:
-key	dc_parse_utils.c	/^	char		key[256];$/;"	m	struct:keyword_	file:
+key	dc_parse_utils.h	/^	char		key[256];$/;"	m	struct:keyword_
+keyword_	backup/compile_test/dc_parse_utils.c	/^typedef struct	keyword_$/;"	s	file:
+keyword_	backup/dc_parse_utils.c	/^typedef struct	keyword_$/;"	s	file:
 keyword_	compile_test/dc_parse_utils.c	/^typedef struct	keyword_$/;"	s	file:
-keyword_	dc_parse_utils.c	/^typedef struct	keyword_$/;"	s	file:
+keyword_	dc_parse_utils.h	/^typedef struct	keyword_$/;"	s
+keyword_t	backup/compile_test/dc_parse_utils.c	/^}keyword_t;$/;"	t	typeref:struct:keyword_	file:
+keyword_t	backup/dc_parse_utils.c	/^}keyword_t;$/;"	t	typeref:struct:keyword_	file:
 keyword_t	compile_test/dc_parse_utils.c	/^}keyword_t;$/;"	t	typeref:struct:keyword_	file:
-keyword_t	dc_parse_utils.c	/^}keyword_t;$/;"	t	typeref:struct:keyword_	file:
+keyword_t	dc_parse_utils.h	/^}keyword_t;$/;"	t	typeref:struct:keyword_
+keywords	backup/compile_test/dc_parse_utils.c	/^keyword_t	keywords[] = $/;"	v
+keywords	backup/dc_parse_utils.c	/^keyword_t	keywords[] = $/;"	v
 keywords	compile_test/dc_parse_utils.c	/^keyword_t	keywords[] = $/;"	v
 keywords	dc_parse_utils.c	/^keyword_t	keywords[] = $/;"	v
+main	backup/compile_test/dc_client.c	/^main()$/;"	f
+main	backup/compile_test/dc_server.c	/^main()$/;"	f
+main	backup/dc_client.c	/^main()$/;"	f
+main	backup/dc_server.c	/^main()$/;"	f
 main	compile_test/dc_client.c	/^main()$/;"	f
 main	compile_test/dc_server.c	/^main()$/;"	f
 main	dc_client.c	/^main()$/;"	f
 main	dc_server.c	/^main()$/;"	f
+msg_	backup/compile_test/dc_msgdef.h	/^enum msg_$/;"	g
+msg_	backup/dc_msgdef.h	/^enum msg_$/;"	g
 msg_	compile_test/dc_msgdef.h	/^enum msg_$/;"	g
-msg_	dc_msgdef.h	/^enum msg_$/;"	g
+msg_	dc_msgdef.h	/^typedef	enum msg_$/;"	g
+msg_handler	backup/compile_test/dc_msgdef.h	/^	int 	(*msg_handler)(char *, uint16_t , char **, uint16_t);$/;"	m	struct:msg_table_
+msg_handler	backup/dc_msgdef.h	/^	int 	(*msg_handler)(char *, uint16_t , char **, uint16_t);$/;"	m	struct:msg_table_
 msg_handler	compile_test/dc_msgdef.h	/^	int 	(*msg_handler)(char *, uint16_t , char **, uint16_t);$/;"	m	struct:msg_table_
 msg_handler	dc_msgdef.h	/^	int 	(*msg_handler)(char *, uint16_t , char **, uint16_t);$/;"	m	struct:msg_table_
+msg_handler_t	backup/compile_test/dc_msgdef.h	/^typedef	int (*msg_handler_t)(char *, uint16_t , char **, uint16_t);$/;"	t
+msg_handler_t	backup/dc_msgdef.h	/^typedef	int (*msg_handler_t)(char *, uint16_t , char **, uint16_t);$/;"	t
 msg_handler_t	compile_test/dc_msgdef.h	/^typedef	int (*msg_handler_t)(char *, uint16_t , char **, uint16_t);$/;"	t
 msg_handler_t	dc_msgdef.h	/^typedef	int (*msg_handler_t)(char *, uint16_t , char **, uint16_t);$/;"	t
+msg_id	backup/compile_test/dc_msgdef.h	/^	msg_t	msg_id;$/;"	m	struct:msg_table_
+msg_id	backup/dc_msgdef.h	/^	msg_t	msg_id;$/;"	m	struct:msg_table_
 msg_id	compile_test/dc_msgdef.h	/^	msg_t	msg_id;$/;"	m	struct:msg_table_
 msg_id	dc_msgdef.h	/^	msg_t	msg_id;$/;"	m	struct:msg_table_
+msg_t	backup/compile_test/dc_msgdef.h	/^}msg_t;$/;"	v	typeref:enum:msg_
+msg_t	backup/dc_msgdef.h	/^}msg_t;$/;"	v	typeref:enum:msg_
 msg_t	compile_test/dc_msgdef.h	/^}msg_t;$/;"	v	typeref:enum:msg_
-msg_t	dc_msgdef.h	/^}msg_t;$/;"	v	typeref:enum:msg_
+msg_t	dc_msgdef.h	/^}msg_t;$/;"	t	typeref:enum:msg_
+msg_table_	backup/compile_test/dc_msgdef.h	/^typedef	struct	msg_table_$/;"	s
+msg_table_	backup/dc_msgdef.h	/^typedef	struct	msg_table_$/;"	s
 msg_table_	compile_test/dc_msgdef.h	/^typedef	struct	msg_table_$/;"	s
 msg_table_	dc_msgdef.h	/^typedef	struct	msg_table_$/;"	s
+msg_table_t	backup/compile_test/dc_msgdef.h	/^}msg_table_t;$/;"	t	typeref:struct:msg_table_
+msg_table_t	backup/dc_msgdef.h	/^}msg_table_t;$/;"	t	typeref:struct:msg_table_
 msg_table_t	compile_test/dc_msgdef.h	/^}msg_table_t;$/;"	t	typeref:struct:msg_table_
 msg_table_t	dc_msgdef.h	/^}msg_table_t;$/;"	t	typeref:struct:msg_table_
+msg_type	backup/compile_test/dc_msgdef.h	/^	msg_t		msg_type;$/;"	m	struct:dc_msg_
+msg_type	backup/dc_msgdef.h	/^	msg_t		msg_type;$/;"	m	struct:dc_msg_
 msg_type	compile_test/dc_msgdef.h	/^	msg_t		msg_type;$/;"	m	struct:dc_msg_
 msg_type	dc_msgdef.h	/^	msg_t		msg_type;$/;"	m	struct:dc_msg_
+no_of_groups	backup/client_info.h	/^	uint8_t		no_of_groups;			$/;"	m	struct:addme_info_
+no_of_groups	backup/compile_test/client_info.h	/^	uint8_t		no_of_groups;			$/;"	m	struct:addme_info_
 no_of_groups	client_info.h	/^	uint8_t		no_of_groups;			$/;"	m	struct:addme_info_
 no_of_groups	compile_test/client_info.h	/^	uint8_t		no_of_groups;			$/;"	m	struct:addme_info_
+opcode	backup/compile_test/dc_parse_utils.c	/^	uint16_t	opcode;$/;"	m	struct:keyword_	file:
+opcode	backup/dc_parse_utils.c	/^	uint16_t	opcode;$/;"	m	struct:keyword_	file:
 opcode	compile_test/dc_parse_utils.c	/^	uint16_t	opcode;$/;"	m	struct:keyword_	file:
-opcode	dc_parse_utils.c	/^	uint16_t	opcode;$/;"	m	struct:keyword_	file:
+opcode	dc_parse_utils.h	/^	uint16_t	opcode;$/;"	m	struct:keyword_
+opcode_	backup/compile_test/dc_parse_utils.c	/^typedef	enum opcode_$/;"	g	file:
+opcode_	backup/dc_parse_utils.c	/^typedef	enum opcode_$/;"	g	file:
 opcode_	compile_test/dc_parse_utils.c	/^typedef	enum opcode_$/;"	g	file:
-opcode_	dc_parse_utils.c	/^typedef	enum opcode_$/;"	g	file:
+opcode_	dc_parse_utils.h	/^typedef	enum opcode_$/;"	g
+opcode_t	backup/compile_test/dc_parse_utils.c	/^}opcode_t;$/;"	t	typeref:enum:opcode_	file:
+opcode_t	backup/dc_parse_utils.c	/^}opcode_t;$/;"	t	typeref:enum:opcode_	file:
 opcode_t	compile_test/dc_parse_utils.c	/^}opcode_t;$/;"	t	typeref:enum:opcode_	file:
-opcode_t	dc_parse_utils.c	/^}opcode_t;$/;"	t	typeref:enum:opcode_	file:
+opcode_t	dc_parse_utils.h	/^}opcode_t;$/;"	t	typeref:enum:opcode_
+payload	backup/compile_test/dc_msgdef.h	/^	unsigned char payload[0];$/;"	m	struct:dc_msg_
+payload	backup/dc_msgdef.h	/^	unsigned char payload[0];$/;"	m	struct:dc_msg_
 payload	compile_test/dc_msgdef.h	/^	unsigned char payload[0];$/;"	m	struct:dc_msg_
-payload	dc_msgdef.h	/^	unsigned char payload[0];$/;"	m	struct:dc_msg_
+payload	dc_msgdef.h	/^	char 		payload[0];$/;"	m	struct:dc_msg_
+payload_len	backup/compile_test/dc_msgdef.h	/^	uint32_t	payload_len;$/;"	m	struct:dc_msg_
+payload_len	backup/dc_msgdef.h	/^	uint32_t	payload_len;$/;"	m	struct:dc_msg_
 payload_len	compile_test/dc_msgdef.h	/^	uint32_t	payload_len;$/;"	m	struct:dc_msg_
 payload_len	dc_msgdef.h	/^	uint32_t	payload_len;$/;"	m	struct:dc_msg_
+port	backup/client_info.h	/^	uint16_t	port;$/;"	m	struct:addme_info_
+port	backup/client_info.h	/^	uint16_t	port;$/;"	m	struct:client_info_
+port	backup/compile_test/client_info.h	/^	uint16_t	port;$/;"	m	struct:addme_info_
+port	backup/compile_test/client_info.h	/^	uint16_t	port;$/;"	m	struct:client_info_
 port	client_info.h	/^	uint16_t	port;$/;"	m	struct:addme_info_
 port	client_info.h	/^	uint16_t	port;$/;"	m	struct:client_info_
 port	compile_test/client_info.h	/^	uint16_t	port;$/;"	m	struct:addme_info_
 port	compile_test/client_info.h	/^	uint16_t	port;$/;"	m	struct:client_info_
+process_message	backup/compile_test/dc_packet.c	/^process_message(connection_t	conn, buffer_t	*buff)$/;"	f
+process_message	backup/dc_packet.c	/^process_message(connection_t	conn, buffer_t	*buff)$/;"	f
 process_message	compile_test/dc_packet.c	/^process_message(connection_t	conn, buffer_t	*buff)$/;"	f
 process_message	dc_packet.c	/^process_message(connection_t	conn, buffer_t	*buff)$/;"	f
+retainer_compose_addme_message	backup/compile_test/dc_client.c	/^retainer_compose_addme_message()$/;"	f
+retainer_compose_addme_message	backup/dc_client.c	/^retainer_compose_addme_message()$/;"	f
 retainer_compose_addme_message	compile_test/dc_client.c	/^retainer_compose_addme_message()$/;"	f
 retainer_compose_addme_message	dc_client.c	/^retainer_compose_addme_message()$/;"	f
+sBindAddress	backup/compile_test/dc_parse_utils.c	/^	sBindAddress,$/;"	e	enum:opcode_	file:
+sBindAddress	backup/dc_parse_utils.c	/^	sBindAddress,$/;"	e	enum:opcode_	file:
 sBindAddress	compile_test/dc_parse_utils.c	/^	sBindAddress,$/;"	e	enum:opcode_	file:
-sBindAddress	dc_parse_utils.c	/^	sBindAddress,$/;"	e	enum:opcode_	file:
+sBindAddress	dc_parse_utils.h	/^	sBindAddress,$/;"	e	enum:opcode_
+sBindport	backup/compile_test/dc_parse_utils.c	/^	sBindport,$/;"	e	enum:opcode_	file:
+sBindport	backup/dc_parse_utils.c	/^	sBindport,$/;"	e	enum:opcode_	file:
 sBindport	compile_test/dc_parse_utils.c	/^	sBindport,$/;"	e	enum:opcode_	file:
-sBindport	dc_parse_utils.c	/^	sBindport,$/;"	e	enum:opcode_	file:
+sBindport	dc_parse_utils.h	/^	sBindport,$/;"	e	enum:opcode_
+sJoinAddr	backup/compile_test/dc_parse_utils.c	/^	sJoinAddr,$/;"	e	enum:opcode_	file:
+sJoinAddr	backup/dc_parse_utils.c	/^	sJoinAddr,$/;"	e	enum:opcode_	file:
 sJoinAddr	compile_test/dc_parse_utils.c	/^	sJoinAddr,$/;"	e	enum:opcode_	file:
-sJoinAddr	dc_parse_utils.c	/^	sJoinAddr,$/;"	e	enum:opcode_	file:
+sJoinAddr	dc_parse_utils.h	/^	sJoinAddr,$/;"	e	enum:opcode_
+sJoinPort	backup/compile_test/dc_parse_utils.c	/^	sJoinPort,$/;"	e	enum:opcode_	file:
+sJoinPort	backup/dc_parse_utils.c	/^	sJoinPort,$/;"	e	enum:opcode_	file:
 sJoinPort	compile_test/dc_parse_utils.c	/^	sJoinPort,$/;"	e	enum:opcode_	file:
-sJoinPort	dc_parse_utils.c	/^	sJoinPort,$/;"	e	enum:opcode_	file:
+sJoinPort	dc_parse_utils.h	/^	sJoinPort,$/;"	e	enum:opcode_
+send_message	backup/compile_test/dc_client.c	/^send_message(connection_t *conn, const unsigned char *msg, uint32_t len)$/;"	f
+send_message	backup/dc_client.c	/^send_message(connection_t *conn, const unsigned char *msg, uint32_t len)$/;"	f
 send_message	compile_test/dc_client.c	/^send_message(connection_t *conn, const unsigned char *msg, uint32_t len)$/;"	f
-send_message	dc_client.c	/^send_message(connection_t *conn, const unsigned char *msg, uint32_t len)$/;"	f
+send_message	dc_client.c	/^send_message(connection_t *conn, const char *msg, uint32_t len)$/;"	f
+server_loop	backup/compile_test/dc_server.c	/^server_loop(connection_t	conn)$/;"	f
+server_loop	backup/dc_server.c	/^server_loop(connection_t	conn)$/;"	f
 server_loop	compile_test/dc_server.c	/^server_loop(connection_t	conn)$/;"	f
 server_loop	dc_server.c	/^server_loop(connection_t	conn)$/;"	f
+server_msg_table	dc_msgdef.c	/^msg_table_t	server_msg_table[] = $/;"	v
+server_process_addme_message	backup/compile_test/dc_server.c	/^server_process_addme_message($/;"	f
+server_process_addme_message	backup/dc_server.c	/^server_process_addme_message($/;"	f
 server_process_addme_message	compile_test/dc_server.c	/^server_process_addme_message($/;"	f
 server_process_addme_message	dc_server.c	/^server_process_addme_message($/;"	f
+sock_fd	backup/compile_test/dc_connection.h	/^	int			sock_fd;$/;"	m	struct:connection_
+sock_fd	backup/dc_connection.h	/^	int			sock_fd;$/;"	m	struct:connection_
 sock_fd	compile_test/dc_connection.h	/^	int			sock_fd;$/;"	m	struct:connection_
 sock_fd	dc_connection.h	/^	int			sock_fd;$/;"	m	struct:connection_
+src_addr	backup/compile_test/dc_connection.h	/^	struct		in_addr src_addr;$/;"	m	struct:connection_	typeref:struct:connection_::in_addr
+src_addr	backup/dc_connection.h	/^	struct		in_addr src_addr;$/;"	m	struct:connection_	typeref:struct:connection_::in_addr
 src_addr	compile_test/dc_connection.h	/^	struct		in_addr src_addr;$/;"	m	struct:connection_	typeref:struct:connection_::in_addr
 src_addr	dc_connection.h	/^	struct		in_addr src_addr;$/;"	m	struct:connection_	typeref:struct:connection_::in_addr
+src_port	backup/compile_test/dc_connection.h	/^	uint16_t	src_port;$/;"	m	struct:connection_
+src_port	backup/dc_connection.h	/^	uint16_t	src_port;$/;"	m	struct:connection_
 src_port	compile_test/dc_connection.h	/^	uint16_t	src_port;$/;"	m	struct:connection_
 src_port	dc_connection.h	/^	uint16_t	src_port;$/;"	m	struct:connection_
+status	backup/client_info.h	/^	int8_t		status;$/;"	m	struct:client_info_
+status	backup/compile_test/client_info.h	/^	int8_t		status;$/;"	m	struct:client_info_
 status	client_info.h	/^	int8_t		status;$/;"	m	struct:client_info_
 status	compile_test/client_info.h	/^	int8_t		status;$/;"	m	struct:client_info_
+value	backup/compile_test/dc_tlv_defs.h	/^	char		value[0];$/;"	m	struct:avl_
+value	backup/dc_tlv_defs.h	/^	char		value[0];$/;"	m	struct:avl_
 value	compile_test/dc_tlv_defs.h	/^	char		value[0];$/;"	m	struct:avl_
 value	dc_tlv_defs.h	/^	char		value[0];$/;"	m	struct:avl_
+value_len	backup/compile_test/dc_tlv_defs.h	/^	uint16_t	value_len;$/;"	m	struct:avl_
+value_len	backup/dc_tlv_defs.h	/^	uint16_t	value_len;$/;"	m	struct:avl_
 value_len	compile_test/dc_tlv_defs.h	/^	uint16_t	value_len;$/;"	m	struct:avl_
 value_len	dc_tlv_defs.h	/^	uint16_t	value_len;$/;"	m	struct:avl_

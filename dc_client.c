@@ -19,6 +19,9 @@
 
 connection_t connection;
 
+int
+client_test_message(int sock_fd);
+
 void
 init_connection(connection_t *conn, int fd)
 {
@@ -26,6 +29,8 @@ init_connection(connection_t *conn, int fd)
 	struct	in_addr dest_adr;
 	int		ret = 0, len = sizeof(myaddr);
 	char	server[16] = "";
+	char	port_str[10] = "";
+	uint16_t	port = 0;
 
 	memset(&myaddr, 0, sizeof(myaddr));
 	memset(&dest_adr, 0, sizeof(dest_adr));
@@ -43,10 +48,20 @@ init_connection(connection_t *conn, int fd)
 		printf("%s : get_value_of_option failed to get server\n", __FUNCTION__);
 		goto end;
 	}
+	
+	ret = get_value_of_option(fp, cDestMultiCasteport, port_str);
+	if(ret < 0)
+	{
+		printf("%s: Failed to get dest port\n", __FUNCTION__);
+		goto end;
+	}
+	port = atoi(port_str);
+
+	printf("Initialising connection to %s@%u...\n", server, htons(port));
 
 	inet_pton(AF_INET, server, &dest_adr);
 	conn->dest_addr = dest_adr;
-	conn->dest_port = htons(1234);
+	conn->dest_port = port;
 end:
 	fclose(fp);
 	return;
@@ -76,12 +91,19 @@ retainer_compose_addme_message()
 int
 send_message(connection_t *conn, const char *msg, uint32_t len)
 {
-	int	nbytes = 0;
+	int		nbytes = 0;
+	struct	sockaddr_in	dest_addr;
+
+	memset(&dest_addr, 0, sizeof(dest_addr));
 
 	if(msg == NULL || (len == 0))
 		return -1;
 
-	nbytes = sendto(conn->sock_fd, msg, len, 0, &conn->dest_addr, sizeof(conn->dest_addr));
+	dest_addr.sin_family = AF_INET;
+	dest_addr.sin_addr = conn->dest_addr;
+	dest_addr.sin_port = htons(conn->dest_port);
+
+	nbytes = sendto(conn->sock_fd, msg, len, 0, &dest_addr, sizeof(dest_addr));
 	return nbytes;
 }
 
@@ -102,11 +124,21 @@ main()
 	}
 
 	init_connection(&connection, sock_fd);
+	if(client_test_message(sock_fd) != 0)
+	{
+		printf("Testing failed..\n");
+		return -1;
+	}
 	
 	add_msg = retainer_compose_addme_message();
 	if(add_msg)
 		ret = send_message(&connection, add_msg, sizeof(dc_msg_t) + sizeof(addme_info_t));
-	
+
+	if(ret == -1)
+	{
+		perror("Sendto");
+		return -1;
+	}
 	printf("Sent %d bytes Successfully\n", ret);
 
 	{
@@ -127,4 +159,46 @@ main()
 
 	return 0;
 }
+
+
+int
+client_test_message(int sock_fd)
+{
+    struct  	sockaddr_in from_addr;
+    uint16_t    from_addr_len = 0;
+    int         nbytes = 0;
+    char        msg[1024] = "";
+	char		from_ip[1024] = "";
+
+    printf("Testing at Socket %d...\n", sock_fd);
+
+    from_addr_len = sizeof(from_addr);
+	strcpy(msg, "Hi, I am a retainer. Trying to Connect to the server");
+	
+	from_addr.sin_family = AF_INET;
+	from_addr.sin_port = htons(45);
+	from_addr.sin_addr.s_addr = inet_addr("225.12.13.14");
+
+    nbytes = sendto(sock_fd, msg, strlen(msg), 0, &from_addr, from_addr_len);
+    if(nbytes == -1)
+    {
+        perror("sendto");
+        return -1;
+    }
+    printf("Successfully send %d bytes to 225.12.13.14\n", nbytes);
+
+	memset(msg, 0, sizeof(msg));
+    nbytes = recvfrom(sock_fd, msg, sizeof(msg), 0, &from_addr, &from_addr_len);
+    inet_ntop(AF_INET, &from_addr.sin_addr, from_ip, sizeof(from_ip));
+    printf("%s: Read %d bytes from %s@%u\n", __FUNCTION__, nbytes, from_ip, ntohs(from_addr.sin_port));
+    printf("%s: Message %s\n", __FUNCTION__, msg);
+
+    //strcpy(msg, "I have received your message retainer. Thank you!!!");
+
+   // nbytes = sendto(sock_fd, msg, strlen(msg), 0, &from_addr, sizeof(from_addr));
+    //printf("Successfully send %d bytes to %s\n", nbytes, from_ip);
+
+    return 0;
+}
+
 

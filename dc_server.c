@@ -12,6 +12,9 @@
 
 #define MAX_PACKET_SIZE (4* 1024)
 
+int
+server_test_message(int sock_fd);
+
 connection_t	connection;
 
 int
@@ -36,8 +39,9 @@ server_loop(connection_t	conn)
 	buffer_t	*recv_buf = NULL;
 
 	recv_buf = get_buffer(MAX_PACKET_SIZE);
+	addr_len = sizeof(from_addr);
 
-	printf("Waiting to receive message ....\n");
+	printf("Waiting to receive message at %d....\n", conn.sock_fd);
 	nbytes = recvfrom(conn.sock_fd, recv_buf->buf, MAX_PACKET_SIZE, 0, &from_addr, &addr_len);
 	inet_ntop(AF_INET, &from_addr.sin_addr, from_ip, sizeof(from_ip));
 
@@ -58,7 +62,7 @@ server_loop(connection_t	conn)
 int
 main()
 {
-	struct		sockaddr_in	join_addr, myaddr;
+	struct		sockaddr_in	myaddr;
 	struct		ip_mreq		join_mc;
 	uint16_t	bind_port = 0;
 	char		join_ip[16] = "";
@@ -88,7 +92,9 @@ main()
 		return -1;
 	}
 
+
 	bind_port = atoi(value);
+	memset(&myaddr, 0, sizeof(myaddr));
 	myaddr.sin_family = AF_INET;
 	myaddr.sin_port = htons(bind_port);
 	myaddr.sin_addr.s_addr = INADDR_ANY;
@@ -101,13 +107,8 @@ main()
 	}
 	printf("Bound to INADDR_ANY@%u\n", htons(bind_port));
 
-	memset(&join_addr, 0, sizeof(join_addr));
 	memset(&join_mc, 0, sizeof(join_mc));
-
-	join_addr.sin_family = AF_INET;
-	inet_pton(AF_INET, join_ip, &join_addr.sin_addr);
-
-	join_mc.imr_multiaddr = join_addr.sin_addr;
+	join_mc.imr_multiaddr.s_addr = inet_addr(join_ip);
 	join_mc.imr_interface.s_addr = INADDR_ANY;
 
 	printf("Joining Multicast Group : %s...\n", join_ip);
@@ -118,9 +119,42 @@ main()
 		printf("Joining Multicast group %s failed\n", join_ip);
 		return -1;
 	}
-	printf("Successfully Joined Multicast Group : %s\n", join_ip);
+	printf("Successfully Joined Multicast Group : %s at %d\n", join_ip, sock_fd);
 
 	connection.sock_fd = sock_fd;
-	connection.src_addr = join_addr.sin_addr;
-	server_loop(connection);
+	connection.src_addr.s_addr = inet_addr(join_ip);
+
+	if(server_test_message(sock_fd) == 0)
+		server_loop(connection);
+}
+
+int
+server_test_message(int sock_fd)
+{
+	struct	sockaddr_in	from_addr;
+	uint16_t	from_addr_len = 0;
+	int			nbytes = 0;
+	char		msg[1024] = "";
+	char		from_ip[1024] = "";
+
+	printf("Testing at Socket %d...\n", sock_fd);
+
+	from_addr_len = sizeof(from_addr);
+	nbytes = recvfrom(sock_fd, msg, sizeof(msg), 0, &from_addr, &from_addr_len);
+	if(nbytes == -1)
+	{
+		perror("recvfrom");
+		return -1;
+	}
+
+	inet_ntop(AF_INET, &from_addr.sin_addr, from_ip, sizeof(from_ip));
+	printf("%s: Read %d bytes from %s@%u\n", __FUNCTION__, nbytes, from_ip, ntohs(from_addr.sin_port));
+	printf("%s: Message %s\n", __FUNCTION__, msg);
+
+	strcpy(msg, "I have received your message retainer. Thank you!!!");
+
+	nbytes = sendto(sock_fd, msg, strlen(msg), 0, &from_addr, sizeof(from_addr));
+	printf("Successfully send %d bytes to %s\n", nbytes, from_ip);
+
+	return 0;
 }

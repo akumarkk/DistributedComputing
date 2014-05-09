@@ -88,6 +88,7 @@ get_value_of_option(FILE *fp, opcode_t	op, char *get_value)
 			{
 				strcpy(get_value, value);
 				get_value[strlen(value) - 1] = '\0';
+				printf("get_value:%s \tvalue:%s\n", get_value, value);
 
 				return 0;
 			}
