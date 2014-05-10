@@ -1,5 +1,10 @@
 DistributedComputing
 ====================
+$How to compile :
+		
+		-	make Makefile 				//To compile server program
+		-	make -f Makefile_client  	//To compile client program
+
 
 Distributed Computing Client-Server implementation 
 
@@ -12,7 +17,10 @@ $Over-all-idea - There are 3 binaries used here:
 								(These are the sub-servers associated with the Controller.
 								 They first joins the Server-multicast group to associate themselves
 								 with the server)
+
+
 	3 Multi-cast IPs are used here:
+
 		*	Retainer-Join-Address - Retainers should join this address. This is the communication 
 									IP between Retainers and Server.
 									[Server]--------------->[Retainers]
