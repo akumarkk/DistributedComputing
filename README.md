@@ -9,6 +9,7 @@ $How to compile :
 Distributed Computing Client-Server implementation 
 
 $Over-all-idea - There are 3 binaries used here:
+
 					> User 		(Presenting the problem)
 					> Server 	(Acts as a Controller. It is the one which receives the problem,
 								 divide it, delegate it to the sub-servers(Retainers) and collates
