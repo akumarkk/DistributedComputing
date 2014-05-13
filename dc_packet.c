@@ -25,6 +25,7 @@ process_message(connection_t	conn, buffer_t	*buff)
 	dc_msg_t		*recv_msg = NULL;
 	uint32_t		msg_id = 0;
 	msg_handler_t	handler = NULL;
+	char			*message = NULL;
 	uint32_t		payload_len = 0;
 	int				ret = -1;
 
@@ -40,6 +41,8 @@ process_message(connection_t	conn, buffer_t	*buff)
 		printf("Message handler for msg_id %x not found\n", msg_id);
 		return -1;
 	}
+	message = get_message_from_msgid(msg_id);
+	printf("Received %s\n" message);
 
 	ret = handler(recv_msg->payload, payload_len, NULL, 0);
 

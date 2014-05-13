@@ -9,6 +9,35 @@ msg_table_t	server_msg_table[] =
 		{ DC_MSG_PROBLEM_REQUEST, 	dc_msg_problem_request	}
 };
 
+typedef struct	dc_msgid_log_
+{
+	msg_t	msg_id;
+	char	message[1024];
+}dc_msgid_log_t;
+
+dc_msgid_log_t	dc_msgid_messages[]
+{
+	{ DC_MSG_HANDSHAKE_ADDME, 	"HANDSHAKE MESSAGE - Add me message"},
+	{ DC_MSG_HEARTBEAT_MESSAGE, "HEARDT-BEAT MESSAGE - Keep alive message" },
+	{ DC_MSG_PROBLEM_REQUEST,	"PRPBLEM_REQUEST_MESSAGE - Problem to be solved"}
+}
+
+char *
+get_message_from_msgid(msg_t	msgid)
+{
+	int		n=0, i=0;
+	static	char	*msg = "Unknown msgid";
+
+	n = sizeof(dc_msgid_messages)/ sizeof(dc_msgid_log_t);
+	for(i = 0; i<n; i++)
+	{
+		if(dc_msgid_messages[i].msg_id == msgid)
+			return dc_msgid_messages[i].message.
+	}
+
+	return msg;
+}
+
 msg_handler_t
 get_msghandler_from_type(msg_t	msg_id)
 {
