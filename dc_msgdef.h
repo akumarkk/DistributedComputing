@@ -34,6 +34,17 @@ typedef	struct	dc_msg_
 	char 		payload[0];
 }dc_msg_t;
 
+/* Data structure to hold the logs for the messages.
+ * It is used to log a message when there is an arrival 
+ * of new message.
+ */
+typedef struct  dc_msgid_log_
+{
+    msg_t   msg_id; 
+    char    message[1024];
+}dc_msgid_log_t;
+
+/*
 int
 dc_msg_server_addme_message(connection_t, void *payload, uint16_t payload_len, void **return_payload, uint16_t ret_payload_len);
 
@@ -46,4 +57,5 @@ dc_msg_heartbeat_message(connection_t, char *payload, uint16_t payload_len, char
 
 int
 dc_msg_problem_request(connection_t, char *payload, uint16_t payload_len, char **return_payload, uint16_t ret_payload_len);
+*/
 #endif /* _DC_MSGDEF_H_ */

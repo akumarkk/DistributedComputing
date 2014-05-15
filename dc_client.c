@@ -117,6 +117,49 @@ send_message(connection_t *conn, const char *msg, uint32_t len)
 	return nbytes;
 }
 
+int
+client_loop(connection_t conn)
+{
+	struct	sockaddr_in	from_addr;
+	char	*recv_buf = NULL;
+	int		nbytes = 0;
+	int		len = sizeof(from_addr);
+
+	recv_buf = get_buffer(MAX_PACKET_SIZE);
+
+	while(1)
+	{
+		printf("%s: Waiting to receive message ...\n", __FUNCTION__);
+		nbytes = recvfrom(conn.sock_fd, recv_buf->buf, MAX_PACKET_SIZE, 0, &from_addr, &len);
+		if(nbytes == -1)
+		{
+			perror("recvfrom");
+			return -1;
+		}
+
+		conn.src_addr = from_addr.sin_addr;
+		conn.src_port = ntohs(from_addr.sin_port);
+		inet_ntop(AF_INET, &from_addr.sin_addr, from_ip, sizeof(from_ip));
+
+		printf("Received %d bytes from %s@%hu\n", nbytes, from_ip, ntohs(from_addr.sin_port));
+#ifdef DUMP
+		int i=0;                                                                                                       
+		unsigned char *ch = (char *)recv_buf->buf;                                                                            
+		printf("# of bytes : %d\n", nbytes);
+		for(i=0; i< nbytes; i++)                                                
+			printf("%02x ", *(ch++));
+		printf("\n");                                                                          
+#endif
+		process_message(conn, recv_buf);
+
+	}
+
+	return 0;
+}
+
+	
+
+
 	
 int
 main()

@@ -5,10 +5,14 @@
 #include "dc_connection.h"
 #include "dc_tlv_defs.h"
 #include "dc_msgdef.h"
+#include "dc_server_msgs.h"
 
 #define DC_SERVER_CONFIG_FILE "dc_server.conf"
 #define DC_SERVER_MAX_CLIENT_SUPPORTED 100
 #define MAX_AVAILABLE_GROUPS 10
+
+#pragma weak get_message_from_msgid = server_get_message_from_msgid
+#pragma weak get_msghandler_from_type = server_get_msghandler_from_type
 
 typedef enum client_state_
 {
@@ -18,8 +22,63 @@ typedef enum client_state_
 	DC_SERVER_PROBLEM_REQUEST_SENT
 } client_state_t;
 
+/* Server message handler table */
+msg_table_t server_msg_table[] =
+{
+        { DC_MSG_HANDSHAKE_ADDME,   dc_msg_server_addme_message  },
+        { DC_MSG_HEARTBEAT_MESSAGE, dc_msg_heartbeat_message },
+        { DC_MSG_PROBLEM_REQUEST,   dc_msg_problem_request   }
+};
+
+
+/* Server dc message logs */
+dc_msgid_log_t  dc_msgid_messages[] =
+{
+    { DC_MSG_HANDSHAKE_ADDME,   "HANDSHAKE MESSAGE - Add me message"},
+    { DC_MSG_HEARTBEAT_MESSAGE, "HEARDT-BEAT MESSAGE - Keep alive message" },
+    { DC_MSG_PROBLEM_REQUEST,   "PRPBLEM_REQUEST_MESSAGE - Problem to be solved"}
+};
+
+
 client_data_t	connected_clients[DC_SERVER_MAX_CLIENT_SUPPORTED];
 client_id_t 	client_index;
+
+char *
+server_get_message_from_msgid(msg_t    msgid)
+{
+    int     n=0, i=0;
+    static  char    *msg = "Unknown msgid";
+
+    n = sizeof(dc_msgid_messages)/ sizeof(dc_msgid_log_t);
+    for(i = 0; i<n; i++)
+    {
+        if(dc_msgid_messages[i].msg_id == msgid)
+            return dc_msgid_messages[i].message;
+    }
+    
+    return msg;
+}
+
+msg_handler_t
+server_get_msghandler_from_type(msg_t  msg_id)
+{
+    msg_handler_t   handler = NULL;
+    uint16_t        n=0, i=0;
+
+    n = sizeof(server_msg_table) / sizeof(server_msg_table);
+    for(i = 0; i<n; i++)
+    {
+        if(server_msg_table[i].msg_id == msg_id)
+        {
+            handler = server_msg_table[i].msg_handler;
+            printf("Found handler fot msg_id : %d\n", msg_id);
+            break;
+        }
+    }
+
+    return handler;
+}
+
 
 is_client_new(struct	in_addr client_addr, uint16_t	client_port)
 {
@@ -40,6 +99,8 @@ is_client_new(struct	in_addr client_addr, uint16_t	client_port)
 
 	return 1;
 }
+
+
 
 
 int
@@ -139,3 +200,31 @@ dc_msg_server_addme_message(
 
 	return 0;
 }
+
+
+int
+dc_msg_heartbeat_message(
+        connection_t    conn,
+        void            *payload,
+        uint16_t        payload_len,
+        void            **return_payload,
+        uint16_t        return_len)
+{
+	printf("%s Processing heart-beat message\n", __FUNCTION__);
+	return 0;
+}
+
+
+int
+dc_msg_problem_request(
+        connection_t    conn,
+        void            *payload,
+        uint16_t        payload_len,
+        void            **return_payload,
+        uint16_t        return_len)
+{
+	printf("%s Processing problem request message\n", __FUNCTION__);
+	return 0;
+}
+
+
