@@ -40,10 +40,13 @@ DC_MSG_PROBLEM_REQUEST	backup/compile_test/dc_msgdef.h	/^	DC_MSG_PROBLEM_REQUEST
 DC_MSG_PROBLEM_REQUEST	backup/dc_msgdef.h	/^	DC_MSG_PROBLEM_REQUEST$/;"	e	enum:msg_
 DC_MSG_PROBLEM_REQUEST	compile_test/dc_msgdef.h	/^	DC_MSG_PROBLEM_REQUEST$/;"	e	enum:msg_
 DC_MSG_PROBLEM_REQUEST	dc_msgdef.h	/^	DC_MSG_PROBLEM_REQUEST$/;"	e	enum:msg_
+DC_SERVER_CONFIG_FILE	dc_server.c	72;"	d	file:
 DEPS	Makefile	/^DEPS=client_info.h dc_connection.h dc_msgdef.h dc_packet.h dc_tlv_defs.h dc_parse_utils.h$/;"	m
 DEPS	backup/Makefile	/^DEPS=client_info.h dc_connection.h dc_msgdef.h dc_packet.h dc_tlv_defs.h$/;"	m
 DEPS	backup/compile_test/Makefile	/^DEPS=client_info.h dc_connection.h dc_msgdef.h dc_packet.h dc_tlv_defs.h$/;"	m
 DEPS	compile_test/Makefile	/^DEPS=client_info.h dc_connection.h dc_msgdef.h dc_packet.h dc_tlv_defs.h$/;"	m
+DUMP	dc_msgdef.h	6;"	d
+DUMP	dc_server.c	13;"	d	file:
 FAILURE	backup/compile_test/dc_client.c	15;"	d	file:
 FAILURE	backup/compile_test/dc_parse_utils.c	7;"	d	file:
 FAILURE	backup/dc_client.c	16;"	d	file:
@@ -55,7 +58,7 @@ FAILURE	dc_parse_utils.h	10;"	d
 MAX_PACKET_SIZE	backup/compile_test/dc_server.c	9;"	d	file:
 MAX_PACKET_SIZE	backup/dc_server.c	9;"	d	file:
 MAX_PACKET_SIZE	compile_test/dc_server.c	9;"	d	file:
-MAX_PACKET_SIZE	dc_server.c	12;"	d	file:
+MAX_PACKET_SIZE	dc_server.c	15;"	d	file:
 OBJS	backup/Makefile	/^OBJS=dc_client.o dc_msgdef.o dc_packet.o dc_parse_utils.o $/;"	m
 OBJS	backup/compile_test/Makefile	/^OBJS=dc_client.o dc_msgdef.o dc_packet.o dc_parse_utils.o $/;"	m
 OBJS	compile_test/Makefile	/^OBJS=dc_client.o dc_msgdef.o dc_packet.o dc_parse_utils.o $/;"	m
@@ -149,8 +152,9 @@ client_info_t	backup/client_info.h	/^}client_info_t;$/;"	t	typeref:struct:client
 client_info_t	backup/compile_test/client_info.h	/^}client_info_t;$/;"	t	typeref:struct:client_info_
 client_info_t	client_info.h	/^}client_info_t;$/;"	t	typeref:struct:client_info_
 client_info_t	compile_test/client_info.h	/^}client_info_t;$/;"	t	typeref:struct:client_info_
-conection	dc_server.c	/^connection_t	conection;$/;"	v
+client_test_message	dc_client.c	/^client_test_message(int sock_fd)$/;"	f
 connection	dc_client.c	/^connection_t connection;$/;"	v
+connection	dc_server.c	/^connection_t	connection;$/;"	v
 connection_	backup/compile_test/dc_connection.h	/^typedef	struct	connection_$/;"	s
 connection_	backup/dc_connection.h	/^typedef	struct	connection_$/;"	s
 connection_	compile_test/dc_connection.h	/^typedef	struct	connection_$/;"	s
@@ -170,6 +174,8 @@ dc_msg_t	backup/compile_test/dc_msgdef.h	/^}dc_msg_t;$/;"	t	typeref:struct:dc_ms
 dc_msg_t	backup/dc_msgdef.h	/^}dc_msg_t;$/;"	t	typeref:struct:dc_msg_
 dc_msg_t	compile_test/dc_msgdef.h	/^}dc_msg_t;$/;"	t	typeref:struct:dc_msg_
 dc_msg_t	dc_msgdef.h	/^}dc_msg_t;$/;"	t	typeref:struct:dc_msg_
+dc_msgid_log_	dc_msgdef.c	/^typedef struct	dc_msgid_log_$/;"	s	file:
+dc_msgid_log_t	dc_msgdef.c	/^}dc_msgid_log_t;$/;"	t	typeref:struct:dc_msgid_log_	file:
 dest_addr	backup/compile_test/dc_connection.h	/^	struct		in_addr	dest_addr;$/;"	m	struct:connection_	typeref:struct:connection_::in_addr
 dest_addr	backup/dc_connection.h	/^	struct		in_addr	dest_addr;$/;"	m	struct:connection_	typeref:struct:connection_::in_addr
 dest_addr	compile_test/dc_connection.h	/^	struct		in_addr	dest_addr;$/;"	m	struct:connection_	typeref:struct:connection_::in_addr
@@ -185,6 +191,7 @@ get_buffer	dc_packet.c	/^get_buffer( int size)$/;"	f
 get_mcast_server	backup/compile_test/dc_client.c	/^get_mcast_server(char	*server)$/;"	f
 get_mcast_server	backup/dc_client.c	/^get_mcast_server(char	*server)$/;"	f
 get_mcast_server	compile_test/dc_client.c	/^get_mcast_server(char	*server)$/;"	f
+get_message_from_msgid	dc_msgdef.c	/^get_message_from_msgid(msg_t	msgid)$/;"	f
 get_msghandler_from_type	dc_msgdef.c	/^get_msghandler_from_type(msg_t	msg_id)$/;"	f
 get_opcode_from_keyword	backup/compile_test/dc_parse_utils.c	/^get_opcode_from_keyword(char	*key)$/;"	f
 get_opcode_from_keyword	backup/dc_parse_utils.c	/^get_opcode_from_keyword(char	*key)$/;"	f
@@ -242,6 +249,7 @@ main	compile_test/dc_client.c	/^main()$/;"	f
 main	compile_test/dc_server.c	/^main()$/;"	f
 main	dc_client.c	/^main()$/;"	f
 main	dc_server.c	/^main()$/;"	f
+message	dc_msgdef.c	/^	char	message[1024];$/;"	m	struct:dc_msgid_log_	file:
 msg_	backup/compile_test/dc_msgdef.h	/^enum msg_$/;"	g
 msg_	backup/dc_msgdef.h	/^enum msg_$/;"	g
 msg_	compile_test/dc_msgdef.h	/^enum msg_$/;"	g
@@ -257,6 +265,7 @@ msg_handler_t	dc_msgdef.h	/^typedef	int (*msg_handler_t)(char *, uint16_t , char
 msg_id	backup/compile_test/dc_msgdef.h	/^	msg_t	msg_id;$/;"	m	struct:msg_table_
 msg_id	backup/dc_msgdef.h	/^	msg_t	msg_id;$/;"	m	struct:msg_table_
 msg_id	compile_test/dc_msgdef.h	/^	msg_t	msg_id;$/;"	m	struct:msg_table_
+msg_id	dc_msgdef.c	/^	msg_t	msg_id;$/;"	m	struct:dc_msgid_log_	file:
 msg_id	dc_msgdef.h	/^	msg_t	msg_id;$/;"	m	struct:msg_table_
 msg_t	backup/compile_test/dc_msgdef.h	/^}msg_t;$/;"	v	typeref:enum:msg_
 msg_t	backup/dc_msgdef.h	/^}msg_t;$/;"	v	typeref:enum:msg_
@@ -343,6 +352,7 @@ server_process_addme_message	backup/compile_test/dc_server.c	/^server_process_ad
 server_process_addme_message	backup/dc_server.c	/^server_process_addme_message($/;"	f
 server_process_addme_message	compile_test/dc_server.c	/^server_process_addme_message($/;"	f
 server_process_addme_message	dc_server.c	/^server_process_addme_message($/;"	f
+server_test_message	dc_server.c	/^server_test_message(int sock_fd)$/;"	f
 sock_fd	backup/compile_test/dc_connection.h	/^	int			sock_fd;$/;"	m	struct:connection_
 sock_fd	backup/dc_connection.h	/^	int			sock_fd;$/;"	m	struct:connection_
 sock_fd	compile_test/dc_connection.h	/^	int			sock_fd;$/;"	m	struct:connection_

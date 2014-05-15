@@ -2,11 +2,13 @@
 
 #include "dc_msgdef.h"
 
+#pragma weak dc_msg_server_addme_message = dc_msg_handshake_addme
+
 msg_table_t	server_msg_table[] = 
 {
-		{ DC_MSG_HANDSHAKE_ADDME, 	dc_msg_handshake_addme	},
-		{ DC_MSG_HEARTBEAT_GET, 	dc_msg_heartbeat_get	},
-		{ DC_MSG_PROBLEM_REQUEST, 	dc_msg_problem_request	}
+		{ DC_MSG_HANDSHAKE_ADDME, 	dc_msg_handshake_addme	 },
+		{ DC_MSG_HEARTBEAT_MESSAGE, dc_msg_heartbeat_message },
+		{ DC_MSG_PROBLEM_REQUEST, 	dc_msg_problem_request	 }
 };
 
 typedef struct	dc_msgid_log_
@@ -15,12 +17,12 @@ typedef struct	dc_msgid_log_
 	char	message[1024];
 }dc_msgid_log_t;
 
-dc_msgid_log_t	dc_msgid_messages[]
+dc_msgid_log_t	dc_msgid_messages[] = 
 {
 	{ DC_MSG_HANDSHAKE_ADDME, 	"HANDSHAKE MESSAGE - Add me message"},
 	{ DC_MSG_HEARTBEAT_MESSAGE, "HEARDT-BEAT MESSAGE - Keep alive message" },
 	{ DC_MSG_PROBLEM_REQUEST,	"PRPBLEM_REQUEST_MESSAGE - Problem to be solved"}
-}
+};
 
 char *
 get_message_from_msgid(msg_t	msgid)
@@ -32,7 +34,7 @@ get_message_from_msgid(msg_t	msgid)
 	for(i = 0; i<n; i++)
 	{
 		if(dc_msgid_messages[i].msg_id == msgid)
-			return dc_msgid_messages[i].message.
+			return dc_msgid_messages[i].message;
 	}
 
 	return msg;
@@ -60,6 +62,7 @@ get_msghandler_from_type(msg_t	msg_id)
 
 int
 dc_msg_handshake_addme(
+		connection_t conn,	
         char        *payload,
         uint16_t    payload_len,
         char        **return_payload,
@@ -71,7 +74,8 @@ dc_msg_handshake_addme(
 }
 
 int
-dc_msg_heartbeat_get(
+dc_msg_heartbeat_message(
+		connection_t conn,	
         char        *payload,
         uint16_t    payload_len,
         char        **return_payload,
@@ -84,6 +88,7 @@ dc_msg_heartbeat_get(
 
 int
 dc_msg_problem_request(
+		connection_t conn,	
         char        *payload,
         uint16_t    payload_len,
         char        **return_payload,

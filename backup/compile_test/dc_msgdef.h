@@ -1,15 +1,17 @@
 #ifndef _DC_MSGDEF_H_
 #define _DC_MSGDEF_H_
 
+#include "dc_connection.h"
+
 /* Definition of Message types used in communication between Client and Server */
 enum msg_
 {
 	DC_MSG_HANDSHAKE_ADDME,
-	DC_MSG_HEARTBEAT_GET,
+	DC_MSG_HEARTBEAT_MESSAGE,
 	DC_MSG_PROBLEM_REQUEST
 }msg_t;
 
-typedef	int (*msg_handler_t)(char *, uint16_t , char **, uint16_t);
+typedef	int (*msg_handler_t)(connection_t, char *, uint16_t , char **, uint16_t);
 /* Structure to hold the msg_t and corresponding handler info */
 
 typedef	struct	msg_table_

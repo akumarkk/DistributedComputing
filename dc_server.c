@@ -49,6 +49,9 @@ server_loop(connection_t	conn)
 
 	printf("Received %d bytes from %s:%hu\n", nbytes, from_ip, ntohs(from_addr.sin_port));
 	
+	conn.src_addr = from_addr.sin_addr;
+	conn.src_port = ntohs(from_addr.sin_port);
+
 	recv_buf->buf_len = nbytes;
 #ifdef DUMP
     int i=0;

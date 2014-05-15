@@ -5,6 +5,7 @@
 #include <ctype.h>
 
 #include "dc_parse_utils.h"
+#define MAX_AVAILABLE_GROUPS 10
 
 keyword_t	keywords[] = 
 {
@@ -12,6 +13,7 @@ keyword_t	keywords[] =
 	{ "sServerBindPort", 	sBindport },
 	{ "sServerJoinAddress", sJoinAddr },
 	{ "sServerJoinPort", sJoinPort },
+	{ "sServerAvailableGroups", sAvailableGroups },
 	{ "cDestMultiCasteAddress", cDestMulticasteAddr },
 	{ "cDestMultiCastePort", cDestMultiCasteport }
 };

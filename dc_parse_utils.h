@@ -21,6 +21,7 @@ typedef	enum opcode_
 	sBindport,
 	sJoinAddr,
 	sJoinPort,
+	sAvailableGroups,
 	cDestMulticasteAddr,
 	cDestMultiCasteport,
 	BadOption

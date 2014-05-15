@@ -42,7 +42,7 @@ process_message(connection_t	conn, buffer_t	*buff)
 		return -1;
 	}
 	message = get_message_from_msgid(msg_id);
-	printf("Received %s\n" message);
+	printf("Received %s\n", message);
 
 	ret = handler(recv_msg->payload, payload_len, NULL, 0);
 
