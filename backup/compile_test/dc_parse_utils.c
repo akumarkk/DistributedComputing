@@ -60,7 +60,7 @@ get_value_of_option(FILE *fp, opcode_t	op, char *get_value)
 
     while( value=fgets(f_line, sizeof(f_line), fp) )
     {
-        //printf("line : %s\n", f_line);
+        printf("line : %s\n", f_line);
         line = f_line;
 
         if(value = strchr(line, '='))
@@ -82,7 +82,7 @@ get_value_of_option(FILE *fp, opcode_t	op, char *get_value)
             while( isspace(line[len-1]) )
                 line[--len] = '\0';
 
-            //printf("key = #%s# \tValue = #%s#\n", line, value);
+            printf("key = #%s# \tValue = #%s#\n", line, value);
 			tmp_opc = get_opcode_from_keyword( line );
 			if(tmp_opc = op)
 			{

@@ -32,20 +32,27 @@ DC_MSG_HANDSHAKE_ADDME	backup/compile_test/dc_msgdef.h	/^	DC_MSG_HANDSHAKE_ADDME
 DC_MSG_HANDSHAKE_ADDME	backup/dc_msgdef.h	/^	DC_MSG_HANDSHAKE_ADDME,$/;"	e	enum:msg_
 DC_MSG_HANDSHAKE_ADDME	compile_test/dc_msgdef.h	/^	DC_MSG_HANDSHAKE_ADDME,$/;"	e	enum:msg_
 DC_MSG_HANDSHAKE_ADDME	dc_msgdef.h	/^	DC_MSG_HANDSHAKE_ADDME,$/;"	e	enum:msg_
-DC_MSG_HEARTBEAT_GET	backup/compile_test/dc_msgdef.h	/^	DC_MSG_HEARTBEAT_GET,$/;"	e	enum:msg_
 DC_MSG_HEARTBEAT_GET	backup/dc_msgdef.h	/^	DC_MSG_HEARTBEAT_GET,$/;"	e	enum:msg_
 DC_MSG_HEARTBEAT_GET	compile_test/dc_msgdef.h	/^	DC_MSG_HEARTBEAT_GET,$/;"	e	enum:msg_
-DC_MSG_HEARTBEAT_GET	dc_msgdef.h	/^	DC_MSG_HEARTBEAT_GET,$/;"	e	enum:msg_
+DC_MSG_HEARTBEAT_MESSAGE	backup/compile_test/dc_msgdef.h	/^	DC_MSG_HEARTBEAT_MESSAGE,$/;"	e	enum:msg_
+DC_MSG_HEARTBEAT_MESSAGE	dc_msgdef.h	/^	DC_MSG_HEARTBEAT_MESSAGE,$/;"	e	enum:msg_
 DC_MSG_PROBLEM_REQUEST	backup/compile_test/dc_msgdef.h	/^	DC_MSG_PROBLEM_REQUEST$/;"	e	enum:msg_
 DC_MSG_PROBLEM_REQUEST	backup/dc_msgdef.h	/^	DC_MSG_PROBLEM_REQUEST$/;"	e	enum:msg_
 DC_MSG_PROBLEM_REQUEST	compile_test/dc_msgdef.h	/^	DC_MSG_PROBLEM_REQUEST$/;"	e	enum:msg_
 DC_MSG_PROBLEM_REQUEST	dc_msgdef.h	/^	DC_MSG_PROBLEM_REQUEST$/;"	e	enum:msg_
-DC_SERVER_CONFIG_FILE	dc_server.c	72;"	d	file:
+DC_MSG_SERVER_PUBLISH_AVAILABLE_GROUPS	dc_msgdef.h	/^	DC_MSG_SERVER_PUBLISH_AVAILABLE_GROUPS,$/;"	e	enum:msg_
+DC_SERVER_ADDME_RECEIVED	dc_server_msgs.c	/^	DC_SERVER_ADDME_RECEIVED,$/;"	e	enum:client_state_	file:
+DC_SERVER_CONFIG_FILE	dc_server.c	75;"	d	file:
+DC_SERVER_CONFIG_FILE	dc_server_msgs.c	9;"	d	file:
+DC_SERVER_JOINED_GROUPS_RECEIVED	dc_server_msgs.c	/^	DC_SERVER_JOINED_GROUPS_RECEIVED,$/;"	e	enum:client_state_	file:
+DC_SERVER_MAX_CLIENT_SUPPORTED	dc_server_msgs.c	10;"	d	file:
+DC_SERVER_PROBLEM_REQUEST_SENT	dc_server_msgs.c	/^	DC_SERVER_PROBLEM_REQUEST_SENT$/;"	e	enum:client_state_	file:
+DC_SERVER_PUBLISH_GROUP_SENT	dc_server_msgs.c	/^	DC_SERVER_PUBLISH_GROUP_SENT,$/;"	e	enum:client_state_	file:
 DEPS	Makefile	/^DEPS=client_info.h dc_connection.h dc_msgdef.h dc_packet.h dc_tlv_defs.h dc_parse_utils.h$/;"	m
 DEPS	backup/Makefile	/^DEPS=client_info.h dc_connection.h dc_msgdef.h dc_packet.h dc_tlv_defs.h$/;"	m
 DEPS	backup/compile_test/Makefile	/^DEPS=client_info.h dc_connection.h dc_msgdef.h dc_packet.h dc_tlv_defs.h$/;"	m
 DEPS	compile_test/Makefile	/^DEPS=client_info.h dc_connection.h dc_msgdef.h dc_packet.h dc_tlv_defs.h$/;"	m
-DUMP	dc_msgdef.h	6;"	d
+DUMP	dc_msgdef.h	8;"	d
 DUMP	dc_server.c	13;"	d	file:
 FAILURE	backup/compile_test/dc_client.c	15;"	d	file:
 FAILURE	backup/compile_test/dc_parse_utils.c	7;"	d	file:
@@ -55,6 +62,8 @@ FAILURE	compile_test/dc_client.c	15;"	d	file:
 FAILURE	compile_test/dc_parse_utils.c	7;"	d	file:
 FAILURE	dc_client.c	18;"	d	file:
 FAILURE	dc_parse_utils.h	10;"	d
+MAX_AVAILABLE_GROUPS	dc_parse_utils.c	8;"	d	file:
+MAX_AVAILABLE_GROUPS	dc_server_msgs.c	11;"	d	file:
 MAX_PACKET_SIZE	backup/compile_test/dc_server.c	9;"	d	file:
 MAX_PACKET_SIZE	backup/dc_server.c	9;"	d	file:
 MAX_PACKET_SIZE	compile_test/dc_server.c	9;"	d	file:
@@ -62,7 +71,7 @@ MAX_PACKET_SIZE	dc_server.c	15;"	d	file:
 OBJS	backup/Makefile	/^OBJS=dc_client.o dc_msgdef.o dc_packet.o dc_parse_utils.o $/;"	m
 OBJS	backup/compile_test/Makefile	/^OBJS=dc_client.o dc_msgdef.o dc_packet.o dc_parse_utils.o $/;"	m
 OBJS	compile_test/Makefile	/^OBJS=dc_client.o dc_msgdef.o dc_packet.o dc_parse_utils.o $/;"	m
-OBJS_SERVER	Makefile	/^OBJS_SERVER=dc_server.o dc_msgdef.o dc_packet.o dc_parse_utils.o$/;"	m
+OBJS_SERVER	Makefile	/^OBJS_SERVER=dc_server.o dc_msgdef.o dc_packet.o dc_parse_utils.o dc_server_msgs.o$/;"	m
 PARSE_SERVER_ADDRESS_TAG	backup/compile_test/dc_client.c	13;"	d	file:
 PARSE_SERVER_ADDRESS_TAG	backup/dc_client.c	14;"	d	file:
 PARSE_SERVER_ADDRESS_TAG	compile_test/dc_client.c	13;"	d	file:
@@ -144,6 +153,10 @@ cDestMulticasteAddr	backup/compile_test/dc_parse_utils.c	/^	cDestMulticasteAddr,
 cDestMulticasteAddr	backup/dc_parse_utils.c	/^	cDestMulticasteAddr,$/;"	e	enum:opcode_	file:
 cDestMulticasteAddr	compile_test/dc_parse_utils.c	/^	cDestMulticasteAddr,$/;"	e	enum:opcode_	file:
 cDestMulticasteAddr	dc_parse_utils.h	/^	cDestMulticasteAddr,$/;"	e	enum:opcode_
+client_data_	dc_connection.h	/^typedef	struct	client_data_$/;"	s
+client_data_t	dc_connection.h	/^}client_data_t;$/;"	t	typeref:struct:client_data_
+client_id_t	dc_connection.h	/^typedef	uint16_t client_id_t;$/;"	t
+client_index	dc_server_msgs.c	/^client_id_t 	client_index;$/;"	v
 client_info_	backup/client_info.h	/^typedef	struct	client_info_$/;"	s
 client_info_	backup/compile_test/client_info.h	/^typedef	struct	client_info_$/;"	s
 client_info_	client_info.h	/^typedef	struct	client_info_$/;"	s
@@ -152,7 +165,11 @@ client_info_t	backup/client_info.h	/^}client_info_t;$/;"	t	typeref:struct:client
 client_info_t	backup/compile_test/client_info.h	/^}client_info_t;$/;"	t	typeref:struct:client_info_
 client_info_t	client_info.h	/^}client_info_t;$/;"	t	typeref:struct:client_info_
 client_info_t	compile_test/client_info.h	/^}client_info_t;$/;"	t	typeref:struct:client_info_
+client_state_	dc_server_msgs.c	/^typedef enum client_state_$/;"	g	file:
+client_state_t	dc_server_msgs.c	/^} client_state_t;$/;"	t	typeref:enum:client_state_	file:
 client_test_message	dc_client.c	/^client_test_message(int sock_fd)$/;"	f
+clientid	dc_connection.h	/^    client_id_t		clientid;$/;"	m	struct:client_data_
+connected_clients	dc_server_msgs.c	/^client_data_t	connected_clients[DC_SERVER_MAX_CLIENT_SUPPORTED];$/;"	v
 connection	dc_client.c	/^connection_t connection;$/;"	v
 connection	dc_server.c	/^connection_t	connection;$/;"	v
 connection_	backup/compile_test/dc_connection.h	/^typedef	struct	connection_$/;"	s
@@ -168,14 +185,17 @@ dc_msg_	backup/dc_msgdef.h	/^typedef	struct	dc_msg_$/;"	s
 dc_msg_	compile_test/dc_msgdef.h	/^typedef	struct	dc_msg_$/;"	s
 dc_msg_	dc_msgdef.h	/^typedef	struct	dc_msg_$/;"	s
 dc_msg_handshake_addme	dc_msgdef.c	/^dc_msg_handshake_addme($/;"	f
-dc_msg_heartbeat_get	dc_msgdef.c	/^dc_msg_heartbeat_get($/;"	f
+dc_msg_heartbeat_message	dc_msgdef.c	/^dc_msg_heartbeat_message($/;"	f
 dc_msg_problem_request	dc_msgdef.c	/^dc_msg_problem_request($/;"	f
+dc_msg_server_addme_message	dc_msgdef.c	5;"	d	file:
+dc_msg_server_addme_message	dc_server_msgs.c	/^dc_msg_server_addme_message($/;"	f
 dc_msg_t	backup/compile_test/dc_msgdef.h	/^}dc_msg_t;$/;"	t	typeref:struct:dc_msg_
 dc_msg_t	backup/dc_msgdef.h	/^}dc_msg_t;$/;"	t	typeref:struct:dc_msg_
 dc_msg_t	compile_test/dc_msgdef.h	/^}dc_msg_t;$/;"	t	typeref:struct:dc_msg_
 dc_msg_t	dc_msgdef.h	/^}dc_msg_t;$/;"	t	typeref:struct:dc_msg_
 dc_msgid_log_	dc_msgdef.c	/^typedef struct	dc_msgid_log_$/;"	s	file:
 dc_msgid_log_t	dc_msgdef.c	/^}dc_msgid_log_t;$/;"	t	typeref:struct:dc_msgid_log_	file:
+dc_msgid_messages	dc_msgdef.c	/^dc_msgid_log_t	dc_msgid_messages[] = $/;"	v
 dest_addr	backup/compile_test/dc_connection.h	/^	struct		in_addr	dest_addr;$/;"	m	struct:connection_	typeref:struct:connection_::in_addr
 dest_addr	backup/dc_connection.h	/^	struct		in_addr	dest_addr;$/;"	m	struct:connection_	typeref:struct:connection_::in_addr
 dest_addr	compile_test/dc_connection.h	/^	struct		in_addr	dest_addr;$/;"	m	struct:connection_	typeref:struct:connection_::in_addr
@@ -201,6 +221,10 @@ get_value_of_option	backup/compile_test/dc_parse_utils.c	/^get_value_of_option(F
 get_value_of_option	backup/dc_parse_utils.c	/^get_value_of_option(FILE *fp, opcode_t	op, char *get_value)$/;"	f
 get_value_of_option	compile_test/dc_parse_utils.c	/^get_value_of_option(FILE *fp, opcode_t	op, char *get_value)$/;"	f
 get_value_of_option	dc_parse_utils.c	/^get_value_of_option(FILE *fp, opcode_t	op, char *get_value)$/;"	f
+group_	dc_connection.h	/^typedef	struct	group_$/;"	s
+group_ip	dc_connection.h	/^	char		*group_ip;$/;"	m	struct:group_
+group_len	dc_connection.h	/^	uint8_t		group_len;$/;"	m	struct:group_
+group_t	dc_connection.h	/^}group_t;$/;"	t	typeref:struct:group_
 groups	backup/client_info.h	/^	avl_t		groups[0];$/;"	m	struct:addme_info_
 groups	backup/client_info.h	/^	char		**groups;$/;"	m	struct:client_info_
 groups	backup/compile_test/client_info.h	/^	avl_t		groups[0];$/;"	m	struct:addme_info_
@@ -209,10 +233,13 @@ groups	client_info.h	/^	avl_t		groups[0];$/;"	m	struct:addme_info_
 groups	client_info.h	/^	char		**groups;$/;"	m	struct:client_info_
 groups	compile_test/client_info.h	/^	avl_t		groups[0];$/;"	m	struct:addme_info_
 groups	compile_test/client_info.h	/^	char		**groups;$/;"	m	struct:client_info_
+groups	dc_connection.h	/^	group_t		**groups;$/;"	m	struct:client_data_
 id	backup/client_info.h	/^	uint32_t	id;$/;"	m	struct:client_info_
 id	backup/compile_test/client_info.h	/^	uint32_t	id;$/;"	m	struct:client_info_
 id	client_info.h	/^	uint32_t	id;$/;"	m	struct:client_info_
 id	compile_test/client_info.h	/^	uint32_t	id;$/;"	m	struct:client_info_
+in_adr	dc_connection.h	/^	struct	in_addr in_adr;$/;"	m	struct:client_data_	typeref:struct:client_data_::in_addr
+in_port	dc_connection.h	/^	uint16_t	in_port;$/;"	m	struct:client_data_
 init_connection	backup/compile_test/dc_client.c	/^init_connection(connection_t *conn, int fd)$/;"	f
 init_connection	backup/dc_client.c	/^init_connection(connection_t *conn, int fd)$/;"	f
 init_connection	compile_test/dc_client.c	/^init_connection(connection_t *conn, int fd)$/;"	f
@@ -225,6 +252,7 @@ ipaddr_avl	backup/client_info.h	/^	avl_t		ipaddr_avl;$/;"	m	struct:addme_info_
 ipaddr_avl	backup/compile_test/client_info.h	/^	avl_t		ipaddr_avl;$/;"	m	struct:addme_info_
 ipaddr_avl	client_info.h	/^	avl_t		ipaddr_avl;$/;"	m	struct:addme_info_
 ipaddr_avl	compile_test/client_info.h	/^	avl_t		ipaddr_avl;$/;"	m	struct:addme_info_
+is_client_new	dc_server_msgs.c	/^is_client_new(struct	in_addr client_addr, uint16_t	client_port)$/;"	f
 key	backup/compile_test/dc_parse_utils.c	/^	char		key[256];$/;"	m	struct:keyword_	file:
 key	backup/dc_parse_utils.c	/^	char		key[256];$/;"	m	struct:keyword_	file:
 key	compile_test/dc_parse_utils.c	/^	char		key[256];$/;"	m	struct:keyword_	file:
@@ -257,8 +285,8 @@ msg_	dc_msgdef.h	/^typedef	enum msg_$/;"	g
 msg_handler	backup/compile_test/dc_msgdef.h	/^	int 	(*msg_handler)(char *, uint16_t , char **, uint16_t);$/;"	m	struct:msg_table_
 msg_handler	backup/dc_msgdef.h	/^	int 	(*msg_handler)(char *, uint16_t , char **, uint16_t);$/;"	m	struct:msg_table_
 msg_handler	compile_test/dc_msgdef.h	/^	int 	(*msg_handler)(char *, uint16_t , char **, uint16_t);$/;"	m	struct:msg_table_
-msg_handler	dc_msgdef.h	/^	int 	(*msg_handler)(char *, uint16_t , char **, uint16_t);$/;"	m	struct:msg_table_
-msg_handler_t	backup/compile_test/dc_msgdef.h	/^typedef	int (*msg_handler_t)(char *, uint16_t , char **, uint16_t);$/;"	t
+msg_handler	dc_msgdef.h	/^	int 	(*msg_handler)(connection_t , char *, uint16_t , char **, uint16_t);$/;"	m	struct:msg_table_
+msg_handler_t	backup/compile_test/dc_msgdef.h	/^typedef	int (*msg_handler_t)(connection_t, char *, uint16_t , char **, uint16_t);$/;"	t
 msg_handler_t	backup/dc_msgdef.h	/^typedef	int (*msg_handler_t)(char *, uint16_t , char **, uint16_t);$/;"	t
 msg_handler_t	compile_test/dc_msgdef.h	/^typedef	int (*msg_handler_t)(char *, uint16_t , char **, uint16_t);$/;"	t
 msg_handler_t	dc_msgdef.h	/^typedef	int (*msg_handler_t)(char *, uint16_t , char **, uint16_t);$/;"	t
@@ -287,6 +315,7 @@ no_of_groups	backup/client_info.h	/^	uint8_t		no_of_groups;			$/;"	m	struct:addm
 no_of_groups	backup/compile_test/client_info.h	/^	uint8_t		no_of_groups;			$/;"	m	struct:addme_info_
 no_of_groups	client_info.h	/^	uint8_t		no_of_groups;			$/;"	m	struct:addme_info_
 no_of_groups	compile_test/client_info.h	/^	uint8_t		no_of_groups;			$/;"	m	struct:addme_info_
+no_of_groups	dc_connection.h	/^	uint8_t		no_of_groups;$/;"	m	struct:client_data_
 opcode	backup/compile_test/dc_parse_utils.c	/^	uint16_t	opcode;$/;"	m	struct:keyword_	file:
 opcode	backup/dc_parse_utils.c	/^	uint16_t	opcode;$/;"	m	struct:keyword_	file:
 opcode	compile_test/dc_parse_utils.c	/^	uint16_t	opcode;$/;"	m	struct:keyword_	file:
@@ -323,6 +352,7 @@ retainer_compose_addme_message	backup/compile_test/dc_client.c	/^retainer_compos
 retainer_compose_addme_message	backup/dc_client.c	/^retainer_compose_addme_message()$/;"	f
 retainer_compose_addme_message	compile_test/dc_client.c	/^retainer_compose_addme_message()$/;"	f
 retainer_compose_addme_message	dc_client.c	/^retainer_compose_addme_message()$/;"	f
+sAvailableGroups	dc_parse_utils.h	/^	sAvailableGroups,$/;"	e	enum:opcode_
 sBindAddress	backup/compile_test/dc_parse_utils.c	/^	sBindAddress,$/;"	e	enum:opcode_	file:
 sBindAddress	backup/dc_parse_utils.c	/^	sBindAddress,$/;"	e	enum:opcode_	file:
 sBindAddress	compile_test/dc_parse_utils.c	/^	sBindAddress,$/;"	e	enum:opcode_	file:
@@ -365,10 +395,12 @@ src_port	backup/compile_test/dc_connection.h	/^	uint16_t	src_port;$/;"	m	struct:
 src_port	backup/dc_connection.h	/^	uint16_t	src_port;$/;"	m	struct:connection_
 src_port	compile_test/dc_connection.h	/^	uint16_t	src_port;$/;"	m	struct:connection_
 src_port	dc_connection.h	/^	uint16_t	src_port;$/;"	m	struct:connection_
+state	dc_connection.h	/^	uint16_t	state; \/*addme received, groups joined received *\/$/;"	m	struct:client_data_
 status	backup/client_info.h	/^	int8_t		status;$/;"	m	struct:client_info_
 status	backup/compile_test/client_info.h	/^	int8_t		status;$/;"	m	struct:client_info_
 status	client_info.h	/^	int8_t		status;$/;"	m	struct:client_info_
 status	compile_test/client_info.h	/^	int8_t		status;$/;"	m	struct:client_info_
+status	dc_connection.h	/^	uint16_t	status; \/*ACTIVE or BUSY *\/$/;"	m	struct:client_data_
 value	backup/compile_test/dc_tlv_defs.h	/^	char		value[0];$/;"	m	struct:avl_
 value	backup/dc_tlv_defs.h	/^	char		value[0];$/;"	m	struct:avl_
 value	compile_test/dc_tlv_defs.h	/^	char		value[0];$/;"	m	struct:avl_

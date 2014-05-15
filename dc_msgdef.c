@@ -2,11 +2,11 @@
 
 #include "dc_msgdef.h"
 
-#pragma weak dc_msg_server_addme_message = dc_msg_handshake_addme
+//#pragma weak dc_msg_handshake_addme = dc_msg_server_addme_message
 
 msg_table_t	server_msg_table[] = 
 {
-		{ DC_MSG_HANDSHAKE_ADDME, 	dc_msg_handshake_addme	 },
+		{ DC_MSG_HANDSHAKE_ADDME, 	dc_msg_server_addme_message	 },
 		{ DC_MSG_HEARTBEAT_MESSAGE, dc_msg_heartbeat_message },
 		{ DC_MSG_PROBLEM_REQUEST, 	dc_msg_problem_request	 }
 };
@@ -60,18 +60,19 @@ get_msghandler_from_type(msg_t	msg_id)
 	return handler;
 }
 
-int
-dc_msg_handshake_addme(
+/*int
+dc_msg_server_addme_message(
 		connection_t conn,	
         char        *payload,
         uint16_t    payload_len,
         char        **return_payload,
-        uint16_t    return_payload_len)
+        uint16_t    return_payload_len);
 {
     printf("%s: Processing addme message\n", __FUNCTION__);
     return 0;
 
-}
+} 
+*/
 
 int
 dc_msg_heartbeat_message(

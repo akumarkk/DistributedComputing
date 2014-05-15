@@ -15,7 +15,7 @@ typedef	enum msg_
 	DC_MSG_PROBLEM_REQUEST
 }msg_t;
 
-typedef	int (*msg_handler_t)(char *, uint16_t , char **, uint16_t);
+typedef	int (*msg_handler_t)(connection_t, char *, uint16_t , char **, uint16_t);
 /* Structure to hold the msg_t and corresponding handler info */
 
 typedef	struct	msg_table_
@@ -33,6 +33,10 @@ typedef	struct	dc_msg_
 	uint32_t	payload_len;
 	char 		payload[0];
 }dc_msg_t;
+
+int
+dc_msg_server_addme_message(connection_t, void *payload, uint16_t payload_len, void **return_payload, uint16_t ret_payload_len);
+
 
 int
 dc_msg_handshake_addme(connection_t, char *payload, uint16_t payload_len, char **return_payload, uint16_t ret_payload_len);

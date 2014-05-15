@@ -24,6 +24,13 @@ client_id_t 	client_index;
 is_client_new(struct	in_addr client_addr, uint16_t	client_port)
 {
 	int i = 0;
+
+	if(client_index == 0)
+	{
+		printf("First client connection\n");
+		return 1;
+	}
+
 	for(i=1; i <= client_index; i++)
 	{
 		if(memcmp(&connected_clients[i].in_adr, &client_addr, sizeof(client_addr)) == 0)
@@ -47,16 +54,17 @@ dc_msg_server_addme_message(
 	char		*group = NULL, *pos = NULL;
 	char		buf[1024 * 5] = "";
 	uint16_t	total_len = 0;
-	uint16_t	nbytes = 0;
+	int16_t	nbytes = 0;
 	struct	sockaddr_in	send_addr;
 	int			ret = -1;
-	avl_t		av;
+	avl_t		*av = NULL;
 
 	FILE		*fp = fopen(DC_SERVER_CONFIG_FILE, "r");
 	dc_msg_t	*dc_msg;
 
 	/* Anyway there will be nothing in the payload of addme msg */
-	if(!is_client_new(conn.src_addr, conn.src_port))
+	printf("%s: preparing to publish available groups on socket %d...\n", __FUNCTION__, conn.sock_fd);
+	if(is_client_new(conn.src_addr, conn.src_port))
 	{
 		client_index++;
 		connected_clients[client_index].clientid = client_index;
@@ -64,15 +72,17 @@ dc_msg_server_addme_message(
 		connected_clients[client_index].in_adr = conn.src_addr;
 		connected_clients[client_index].state = DC_SERVER_ADDME_RECEIVED;
 	}
-
+	
 	ret = get_value_of_option(fp, sAvailableGroups, publish_groups);
 	if(ret == -1)
 	{
 		printf("%s : Failed to get Available Groups\n", __FUNCTION__);
 		return -1;
 	}
-
-	if(group = strtok(publish_groups, " ") == NULL)
+	
+	char *ptr = strdup(publish_groups);
+	//printf("publish_groups = %s %s\n", publish_groups, ptr);
+	if((group = strtok(ptr, ",")) == NULL)
 	{
 		printf("%s: No AvailableGroups found in the %s\n", __FUNCTION__, DC_SERVER_CONFIG_FILE);
 		return -1;
@@ -84,12 +94,14 @@ dc_msg_server_addme_message(
 	 *	length  = length of group
 	 *	value 	= Group
 	 */
-	av.attr_id = htonl(DC_ATTR_MULTICAST_GROUP);
-	av.value_len = htons(strlen(group));
-	memcpy(&av.value, group, strlen(group));
+	av = malloc(sizeof(avl_t) + strlen(publish_groups));
+	av->attr_id = htonl(DC_ATTR_MULTICAST_GROUP);
+	av->value_len = htons(strlen(group));
+	memcpy(av->value, group, strlen(group));
 	
 	total_len = sizeof(avl_t) + strlen(group);
-	memcpy(pos, &av, total_len);
+	pos = buf;
+	memcpy(pos, av, total_len);
 	pos = pos + total_len;
 	
 	while(group = strtok(NULL, " "))
@@ -99,11 +111,11 @@ dc_msg_server_addme_message(
 		len = strlen(group);
 		total_len += ( len + sizeof(avl_t));
 
-		av.attr_id = htonl(DC_ATTR_MULTICAST_GROUP);
-		av.value_len = htons(len);
-		memcpy(&av.value, group, strlen(group));
+		av->attr_id = htonl(DC_ATTR_MULTICAST_GROUP);
+		av->value_len = htons(len);
+		memcpy(av->value, group, strlen(group));
 		
-		memcpy(pos, &av, total_len);
+		memcpy(pos, av, total_len);
 		pos+=(len + sizeof(avl_t));
 
 	}
@@ -116,7 +128,7 @@ dc_msg_server_addme_message(
 	send_addr.sin_family = AF_INET;
 	send_addr.sin_port = htons(conn.src_port);
 	send_addr.sin_addr = conn.src_addr;
-	nbytes = sendto(AF_INET, buf, sizeof(dc_msg_t) + total_len, 0, &send_addr, sizeof(send_addr));
+	nbytes = sendto(conn.sock_fd, buf, sizeof(dc_msg_t) + total_len, 0, &send_addr, sizeof(send_addr));
 
 	if(nbytes == -1)
 	{

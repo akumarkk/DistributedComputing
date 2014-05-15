@@ -69,8 +69,9 @@ get_value_of_option(FILE *fp, opcode_t	op, char *get_value)
 
             //printf("key = #%s# \tValue = #%s#\n", line, value);
 			tmp_opc = get_opcode_from_keyword( line );
-			if(tmp_opc = op)
+			if(tmp_opc == op)
 			{
+				//printf("DEBUG: Found the opcode\n");
 				strcpy(get_value, value);
 				get_value[strlen(value) ] = '\0';
 
