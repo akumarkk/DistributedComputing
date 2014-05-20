@@ -5,12 +5,15 @@
 #include <stdint.h>
 #include "dc_connection.h"
 
-#define DUMP
+#define MAX_PACKET_SIZE 4024
+#define DC_MAX_GROUP_SIZE 10 * 30
+//#define DUMP
 /* Definition of Message types used in communication between Client and Server */
 typedef	enum msg_
 {
 	DC_MSG_HANDSHAKE_ADDME,
 	DC_MSG_SERVER_PUBLISH_AVAILABLE_GROUPS,
+	DC_MSG_CLIENT_JOINED_GROUPS,
 	DC_MSG_HEARTBEAT_MESSAGE,
 	DC_MSG_PROBLEM_REQUEST
 }msg_t;

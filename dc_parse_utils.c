@@ -25,9 +25,10 @@ get_opcode_from_keyword(char	*key)
 	int			i = 0;
 	for(i=0; i<n; i++)
 	{
-		if(strcasecmp(keywords[i].key, key) == 0)
+		if(strncasecmp(keywords[i].key, key,strlen(key)) == 0)
 			return keywords[i].opcode;
 	}
+	//printf("n = %d i=%d\treturning BadOption \n", n, i);
 
 	return BadOption;
 }
@@ -39,6 +40,8 @@ get_value_of_option(FILE *fp, opcode_t	op, char *get_value)
     int     len = 0;
     char    f_line[1024], *value = NULL, *line=NULL;
 	opcode_t	tmp_opc;
+
+	//printf("Processing opcode : %d\n", op);
 
     if(fp == NULL || (get_value == NULL))
         return -1;
@@ -69,6 +72,7 @@ get_value_of_option(FILE *fp, opcode_t	op, char *get_value)
 
             //printf("key = #%s# \tValue = #%s#\n", line, value);
 			tmp_opc = get_opcode_from_keyword( line );
+			//printf("op = %d \tGot_op = %d\n", op, tmp_opc);
 			if(tmp_opc == op)
 			{
 				//printf("DEBUG: Found the opcode\n");
@@ -76,6 +80,11 @@ get_value_of_option(FILE *fp, opcode_t	op, char *get_value)
 				get_value[strlen(value) ] = '\0';
 
 				return 0;
+			}
+			else if(tmp_opc == BadOption)
+			{
+				//printf("Bad option ...\n");
+				//return -1;
 			}
 
         }

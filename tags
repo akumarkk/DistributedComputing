@@ -43,12 +43,12 @@ DC_MSG_PROBLEM_REQUEST	dc_msgdef.h	/^	DC_MSG_PROBLEM_REQUEST$/;"	e	enum:msg_
 DC_MSG_SERVER_PUBLISH_AVAILABLE_GROUPS	dc_msgdef.h	/^	DC_MSG_SERVER_PUBLISH_AVAILABLE_GROUPS,$/;"	e	enum:msg_
 DC_SERVER_ADDME_RECEIVED	dc_server_msgs.c	/^	DC_SERVER_ADDME_RECEIVED,$/;"	e	enum:client_state_	file:
 DC_SERVER_CONFIG_FILE	dc_server.c	75;"	d	file:
-DC_SERVER_CONFIG_FILE	dc_server_msgs.c	9;"	d	file:
+DC_SERVER_CONFIG_FILE	dc_server_msgs.c	10;"	d	file:
 DC_SERVER_JOINED_GROUPS_RECEIVED	dc_server_msgs.c	/^	DC_SERVER_JOINED_GROUPS_RECEIVED,$/;"	e	enum:client_state_	file:
-DC_SERVER_MAX_CLIENT_SUPPORTED	dc_server_msgs.c	10;"	d	file:
+DC_SERVER_MAX_CLIENT_SUPPORTED	dc_server_msgs.c	11;"	d	file:
 DC_SERVER_PROBLEM_REQUEST_SENT	dc_server_msgs.c	/^	DC_SERVER_PROBLEM_REQUEST_SENT$/;"	e	enum:client_state_	file:
 DC_SERVER_PUBLISH_GROUP_SENT	dc_server_msgs.c	/^	DC_SERVER_PUBLISH_GROUP_SENT,$/;"	e	enum:client_state_	file:
-DEPS	Makefile	/^DEPS=client_info.h dc_connection.h dc_msgdef.h dc_packet.h dc_tlv_defs.h dc_parse_utils.h$/;"	m
+DEPS	Makefile	/^DEPS=dc_server_msgs.h client_info.h dc_connection.h dc_msgdef.h dc_packet.h dc_tlv_defs.h dc_parse_utils.h$/;"	m
 DEPS	backup/Makefile	/^DEPS=client_info.h dc_connection.h dc_msgdef.h dc_packet.h dc_tlv_defs.h$/;"	m
 DEPS	backup/compile_test/Makefile	/^DEPS=client_info.h dc_connection.h dc_msgdef.h dc_packet.h dc_tlv_defs.h$/;"	m
 DEPS	compile_test/Makefile	/^DEPS=client_info.h dc_connection.h dc_msgdef.h dc_packet.h dc_tlv_defs.h$/;"	m
@@ -63,7 +63,7 @@ FAILURE	compile_test/dc_parse_utils.c	7;"	d	file:
 FAILURE	dc_client.c	18;"	d	file:
 FAILURE	dc_parse_utils.h	10;"	d
 MAX_AVAILABLE_GROUPS	dc_parse_utils.c	8;"	d	file:
-MAX_AVAILABLE_GROUPS	dc_server_msgs.c	11;"	d	file:
+MAX_AVAILABLE_GROUPS	dc_server_msgs.c	12;"	d	file:
 MAX_PACKET_SIZE	backup/compile_test/dc_server.c	9;"	d	file:
 MAX_PACKET_SIZE	backup/dc_server.c	9;"	d	file:
 MAX_PACKET_SIZE	compile_test/dc_server.c	9;"	d	file:
@@ -71,7 +71,7 @@ MAX_PACKET_SIZE	dc_server.c	15;"	d	file:
 OBJS	backup/Makefile	/^OBJS=dc_client.o dc_msgdef.o dc_packet.o dc_parse_utils.o $/;"	m
 OBJS	backup/compile_test/Makefile	/^OBJS=dc_client.o dc_msgdef.o dc_packet.o dc_parse_utils.o $/;"	m
 OBJS	compile_test/Makefile	/^OBJS=dc_client.o dc_msgdef.o dc_packet.o dc_parse_utils.o $/;"	m
-OBJS_SERVER	Makefile	/^OBJS_SERVER=dc_server.o dc_msgdef.o dc_packet.o dc_parse_utils.o dc_server_msgs.o$/;"	m
+OBJS_SERVER	Makefile	/^OBJS_SERVER=dc_server.o dc_packet.o dc_parse_utils.o dc_server_msgs.o$/;"	m
 PARSE_SERVER_ADDRESS_TAG	backup/compile_test/dc_client.c	13;"	d	file:
 PARSE_SERVER_ADDRESS_TAG	backup/dc_client.c	14;"	d	file:
 PARSE_SERVER_ADDRESS_TAG	compile_test/dc_client.c	13;"	d	file:
@@ -101,6 +101,7 @@ _DC_PACKET_H_	backup/dc_packet.h	2;"	d
 _DC_PACKET_H_	compile_test/dc_packet.h	2;"	d
 _DC_PACKET_H_	dc_packet.h	2;"	d
 _DC_PARSE_UTILS_H_	dc_parse_utils.h	2;"	d
+_DC_SERVER_MSGS_H_	dc_server_msgs.h	2;"	d
 addme_info_	backup/client_info.h	/^typedef struct	addme_info_$/;"	s
 addme_info_	backup/compile_test/client_info.h	/^typedef struct	addme_info_$/;"	s
 addme_info_	client_info.h	/^typedef struct	addme_info_$/;"	s
@@ -155,6 +156,8 @@ cDestMulticasteAddr	compile_test/dc_parse_utils.c	/^	cDestMulticasteAddr,$/;"	e	
 cDestMulticasteAddr	dc_parse_utils.h	/^	cDestMulticasteAddr,$/;"	e	enum:opcode_
 client_data_	dc_connection.h	/^typedef	struct	client_data_$/;"	s
 client_data_t	dc_connection.h	/^}client_data_t;$/;"	t	typeref:struct:client_data_
+client_get_message_from_msgid	dc_client_msgs.c	/^client_get_message_from_msgid(msg_t	msgid)$/;"	f
+client_get_msghandler_from_type	dc_client_msgs.c	/^client_get_msghandler_from_type(msg_t	msg_id)$/;"	f
 client_id_t	dc_connection.h	/^typedef	uint16_t client_id_t;$/;"	t
 client_index	dc_server_msgs.c	/^client_id_t 	client_index;$/;"	v
 client_info_	backup/client_info.h	/^typedef	struct	client_info_$/;"	s
@@ -165,6 +168,8 @@ client_info_t	backup/client_info.h	/^}client_info_t;$/;"	t	typeref:struct:client
 client_info_t	backup/compile_test/client_info.h	/^}client_info_t;$/;"	t	typeref:struct:client_info_
 client_info_t	client_info.h	/^}client_info_t;$/;"	t	typeref:struct:client_info_
 client_info_t	compile_test/client_info.h	/^}client_info_t;$/;"	t	typeref:struct:client_info_
+client_loop	dc_client.c	/^client_loop(connection_t conn)$/;"	f
+client_msg_table	dc_client_msgs.c	/^msg_table_t	client_msg_table[] = $/;"	v
 client_state_	dc_server_msgs.c	/^typedef enum client_state_$/;"	g	file:
 client_state_t	dc_server_msgs.c	/^} client_state_t;$/;"	t	typeref:enum:client_state_	file:
 client_test_message	dc_client.c	/^client_test_message(int sock_fd)$/;"	f
@@ -184,18 +189,26 @@ dc_msg_	backup/compile_test/dc_msgdef.h	/^typedef	struct	dc_msg_$/;"	s
 dc_msg_	backup/dc_msgdef.h	/^typedef	struct	dc_msg_$/;"	s
 dc_msg_	compile_test/dc_msgdef.h	/^typedef	struct	dc_msg_$/;"	s
 dc_msg_	dc_msgdef.h	/^typedef	struct	dc_msg_$/;"	s
-dc_msg_handshake_addme	dc_msgdef.c	/^dc_msg_handshake_addme($/;"	f
+dc_msg_heartbeat_message	dc_client_msgs.c	/^dc_msg_heartbeat_message($/;"	f
 dc_msg_heartbeat_message	dc_msgdef.c	/^dc_msg_heartbeat_message($/;"	f
+dc_msg_heartbeat_message	dc_server_msgs.c	/^dc_msg_heartbeat_message($/;"	f
+dc_msg_problem_request	dc_client_msgs.c	/^dc_msg_problem_request($/;"	f
 dc_msg_problem_request	dc_msgdef.c	/^dc_msg_problem_request($/;"	f
-dc_msg_server_addme_message	dc_msgdef.c	5;"	d	file:
+dc_msg_problem_request	dc_server_msgs.c	/^dc_msg_problem_request($/;"	f
 dc_msg_server_addme_message	dc_server_msgs.c	/^dc_msg_server_addme_message($/;"	f
 dc_msg_t	backup/compile_test/dc_msgdef.h	/^}dc_msg_t;$/;"	t	typeref:struct:dc_msg_
 dc_msg_t	backup/dc_msgdef.h	/^}dc_msg_t;$/;"	t	typeref:struct:dc_msg_
 dc_msg_t	compile_test/dc_msgdef.h	/^}dc_msg_t;$/;"	t	typeref:struct:dc_msg_
 dc_msg_t	dc_msgdef.h	/^}dc_msg_t;$/;"	t	typeref:struct:dc_msg_
+dc_msgid_log_	dc_client_msgs.c	/^typedef struct	dc_msgid_log_$/;"	s	file:
 dc_msgid_log_	dc_msgdef.c	/^typedef struct	dc_msgid_log_$/;"	s	file:
+dc_msgid_log_	dc_msgdef.h	/^typedef struct  dc_msgid_log_$/;"	s
+dc_msgid_log_t	dc_client_msgs.c	/^}dc_msgid_log_t;$/;"	t	typeref:struct:dc_msgid_log_	file:
 dc_msgid_log_t	dc_msgdef.c	/^}dc_msgid_log_t;$/;"	t	typeref:struct:dc_msgid_log_	file:
+dc_msgid_log_t	dc_msgdef.h	/^}dc_msgid_log_t;$/;"	t	typeref:struct:dc_msgid_log_
+dc_msgid_messages	dc_client_msgs.c	/^dc_msgid_log_t	dc_msgid_messages[] = $/;"	v
 dc_msgid_messages	dc_msgdef.c	/^dc_msgid_log_t	dc_msgid_messages[] = $/;"	v
+dc_msgid_messages	dc_server_msgs.c	/^dc_msgid_log_t  dc_msgid_messages[] =$/;"	v
 dest_addr	backup/compile_test/dc_connection.h	/^	struct		in_addr	dest_addr;$/;"	m	struct:connection_	typeref:struct:connection_::in_addr
 dest_addr	backup/dc_connection.h	/^	struct		in_addr	dest_addr;$/;"	m	struct:connection_	typeref:struct:connection_::in_addr
 dest_addr	compile_test/dc_connection.h	/^	struct		in_addr	dest_addr;$/;"	m	struct:connection_	typeref:struct:connection_::in_addr
@@ -211,8 +224,12 @@ get_buffer	dc_packet.c	/^get_buffer( int size)$/;"	f
 get_mcast_server	backup/compile_test/dc_client.c	/^get_mcast_server(char	*server)$/;"	f
 get_mcast_server	backup/dc_client.c	/^get_mcast_server(char	*server)$/;"	f
 get_mcast_server	compile_test/dc_client.c	/^get_mcast_server(char	*server)$/;"	f
+get_message_from_msgid	dc_client_msgs.c	5;"	d	file:
 get_message_from_msgid	dc_msgdef.c	/^get_message_from_msgid(msg_t	msgid)$/;"	f
+get_message_from_msgid	dc_server_msgs.c	14;"	d	file:
+get_msghandler_from_type	dc_client_msgs.c	6;"	d	file:
 get_msghandler_from_type	dc_msgdef.c	/^get_msghandler_from_type(msg_t	msg_id)$/;"	f
+get_msghandler_from_type	dc_server_msgs.c	15;"	d	file:
 get_opcode_from_keyword	backup/compile_test/dc_parse_utils.c	/^get_opcode_from_keyword(char	*key)$/;"	f
 get_opcode_from_keyword	backup/dc_parse_utils.c	/^get_opcode_from_keyword(char	*key)$/;"	f
 get_opcode_from_keyword	compile_test/dc_parse_utils.c	/^get_opcode_from_keyword(char	*key)$/;"	f
@@ -277,7 +294,9 @@ main	compile_test/dc_client.c	/^main()$/;"	f
 main	compile_test/dc_server.c	/^main()$/;"	f
 main	dc_client.c	/^main()$/;"	f
 main	dc_server.c	/^main()$/;"	f
+message	dc_client_msgs.c	/^	char	message[1024];$/;"	m	struct:dc_msgid_log_	file:
 message	dc_msgdef.c	/^	char	message[1024];$/;"	m	struct:dc_msgid_log_	file:
+message	dc_msgdef.h	/^    char    message[1024];$/;"	m	struct:dc_msgid_log_
 msg_	backup/compile_test/dc_msgdef.h	/^enum msg_$/;"	g
 msg_	backup/dc_msgdef.h	/^enum msg_$/;"	g
 msg_	compile_test/dc_msgdef.h	/^enum msg_$/;"	g
@@ -289,12 +308,14 @@ msg_handler	dc_msgdef.h	/^	int 	(*msg_handler)(connection_t , char *, uint16_t ,
 msg_handler_t	backup/compile_test/dc_msgdef.h	/^typedef	int (*msg_handler_t)(connection_t, char *, uint16_t , char **, uint16_t);$/;"	t
 msg_handler_t	backup/dc_msgdef.h	/^typedef	int (*msg_handler_t)(char *, uint16_t , char **, uint16_t);$/;"	t
 msg_handler_t	compile_test/dc_msgdef.h	/^typedef	int (*msg_handler_t)(char *, uint16_t , char **, uint16_t);$/;"	t
-msg_handler_t	dc_msgdef.h	/^typedef	int (*msg_handler_t)(char *, uint16_t , char **, uint16_t);$/;"	t
+msg_handler_t	dc_msgdef.h	/^typedef	int (*msg_handler_t)(connection_t, char *, uint16_t , char **, uint16_t);$/;"	t
 msg_id	backup/compile_test/dc_msgdef.h	/^	msg_t	msg_id;$/;"	m	struct:msg_table_
 msg_id	backup/dc_msgdef.h	/^	msg_t	msg_id;$/;"	m	struct:msg_table_
 msg_id	compile_test/dc_msgdef.h	/^	msg_t	msg_id;$/;"	m	struct:msg_table_
+msg_id	dc_client_msgs.c	/^	msg_t	msg_id;$/;"	m	struct:dc_msgid_log_	file:
 msg_id	dc_msgdef.c	/^	msg_t	msg_id;$/;"	m	struct:dc_msgid_log_	file:
 msg_id	dc_msgdef.h	/^	msg_t	msg_id;$/;"	m	struct:msg_table_
+msg_id	dc_msgdef.h	/^    msg_t   msg_id; $/;"	m	struct:dc_msgid_log_
 msg_t	backup/compile_test/dc_msgdef.h	/^}msg_t;$/;"	v	typeref:enum:msg_
 msg_t	backup/dc_msgdef.h	/^}msg_t;$/;"	v	typeref:enum:msg_
 msg_t	compile_test/dc_msgdef.h	/^}msg_t;$/;"	v	typeref:enum:msg_
@@ -373,11 +394,14 @@ send_message	backup/compile_test/dc_client.c	/^send_message(connection_t *conn, 
 send_message	backup/dc_client.c	/^send_message(connection_t *conn, const unsigned char *msg, uint32_t len)$/;"	f
 send_message	compile_test/dc_client.c	/^send_message(connection_t *conn, const unsigned char *msg, uint32_t len)$/;"	f
 send_message	dc_client.c	/^send_message(connection_t *conn, const char *msg, uint32_t len)$/;"	f
+server_get_message_from_msgid	dc_server_msgs.c	/^server_get_message_from_msgid(msg_t    msgid)$/;"	f
+server_get_msghandler_from_type	dc_server_msgs.c	/^server_get_msghandler_from_type(msg_t  msg_id)$/;"	f
 server_loop	backup/compile_test/dc_server.c	/^server_loop(connection_t	conn)$/;"	f
 server_loop	backup/dc_server.c	/^server_loop(connection_t	conn)$/;"	f
 server_loop	compile_test/dc_server.c	/^server_loop(connection_t	conn)$/;"	f
 server_loop	dc_server.c	/^server_loop(connection_t	conn)$/;"	f
 server_msg_table	dc_msgdef.c	/^msg_table_t	server_msg_table[] = $/;"	v
+server_msg_table	dc_server_msgs.c	/^msg_table_t server_msg_table[] =$/;"	v
 server_process_addme_message	backup/compile_test/dc_server.c	/^server_process_addme_message($/;"	f
 server_process_addme_message	backup/dc_server.c	/^server_process_addme_message($/;"	f
 server_process_addme_message	compile_test/dc_server.c	/^server_process_addme_message($/;"	f

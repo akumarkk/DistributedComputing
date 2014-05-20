@@ -10,7 +10,7 @@
 #include "dc_packet.h"
 #include "dc_parse_utils.h"
 
-#define DUMP
+//#define DUMP
 
 #define MAX_PACKET_SIZE (4* 1024)
 
@@ -138,7 +138,7 @@ main()
 	connection.sock_fd = sock_fd;
 	connection.src_addr.s_addr = inet_addr(join_ip);
 
-	if(server_test_message(sock_fd) == 0)
+	//if(server_test_message(sock_fd) == 0)
 		server_loop(connection);
 }
 

@@ -1,6 +1,8 @@
 #ifndef _DC_AVL_DEFS_H_
 #define _DC_AVL_DEFS_H_
 
+#define DUMP_AVP
+
 typedef enum attr_t_
 {
 	DC_ATTR_MACHINE_IP,

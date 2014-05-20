@@ -10,6 +10,7 @@
 #include "dc_msgdef.h"
 #include "dc_parse_utils.h"
 #include "client_info.h"
+#include "dc_packet.h"
 
 
 #define CLIENT_CONFIG_FILE 			"dc_client.conf"
@@ -48,6 +49,8 @@ init_connection(connection_t *conn, int fd)
 		printf("%s : get_value_of_option failed to get server\n", __FUNCTION__);
 		goto end;
 	}
+	close(fp);
+	fp = fopen(CLIENT_CONFIG_FILE, "r");
 	
 	ret = get_value_of_option(fp, cDestMultiCasteport, port_str);
 	if(ret < 0)
@@ -120,10 +123,11 @@ send_message(connection_t *conn, const char *msg, uint32_t len)
 int
 client_loop(connection_t conn)
 {
-	struct	sockaddr_in	from_addr;
-	char	*recv_buf = NULL;
-	int		nbytes = 0;
-	int		len = sizeof(from_addr);
+	struct		sockaddr_in	from_addr;
+	buffer_t	*recv_buf = NULL;
+	char		from_ip[16] = "";
+	int			nbytes = 0;
+	int			len = sizeof(from_addr);
 
 	recv_buf = get_buffer(MAX_PACKET_SIZE);
 
@@ -177,11 +181,11 @@ main()
 	}
 
 	init_connection(&connection, sock_fd);
-	if(client_test_message(sock_fd) != 0)
+	/*if(client_test_message(sock_fd) != 0)
 	{
 		printf("Testing failed..\n");
 		return -1;
-	}
+	}*/
 	
 	add_msg = retainer_compose_addme_message();
 	if(add_msg)
@@ -193,6 +197,8 @@ main()
 		return -1;
 	}
 	printf("Sent %d bytes Successfully\n", ret);
+	
+	client_loop(connection);
 
 	{
 		struct	sockaddr_in	from_addr;

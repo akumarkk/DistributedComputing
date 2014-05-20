@@ -71,7 +71,7 @@ server_get_msghandler_from_type(msg_t  msg_id)
         if(server_msg_table[i].msg_id == msg_id)
         {
             handler = server_msg_table[i].msg_handler;
-            printf("Found handler fot msg_id : %d\n", msg_id);
+            //printf("Found handler fot msg_id : %d\n", msg_id);
             break;
         }
     }
@@ -159,6 +159,11 @@ dc_msg_server_addme_message(
 	av->attr_id = htonl(DC_ATTR_MULTICAST_GROUP);
 	av->value_len = htons(strlen(group));
 	memcpy(av->value, group, strlen(group));
+#ifdef DUMP_AVP
+	printf("attr_id		:	%d \n", av->attr_id);
+	printf("value_len	:	%d \n", av->value_len);
+	printf("value		:	%s \n", av->value);
+#endif
 	
 	total_len = sizeof(avl_t) + strlen(group);
 	pos = buf;
@@ -178,7 +183,11 @@ dc_msg_server_addme_message(
 		
 		memcpy(pos, av, total_len);
 		pos+=(len + sizeof(avl_t));
-
+#ifdef DUMP_AVP
+    printf("attr_id     :   %d  %d\n", av->attr_id, DC_ATTR_MULTICAST_GROUP);
+    printf("value_len   :   %d 	%d\n", av->value_len, len);
+    printf("value       :   %s \n", av->value);
+#endif
 	}
 
 	dc_msg = malloc(sizeof(dc_msg_t) + total_len);
